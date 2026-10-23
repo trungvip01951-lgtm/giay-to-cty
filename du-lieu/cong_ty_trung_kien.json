@@ -28,9 +28,27 @@
       "quoc_tich": "Việt Nam"
     },
     "nhan_hieu": [
-      {"ten": "PEROTAC", "so_don": "4-2025-06562", "ngay_nop": "24/02/2025", "xuat_xu": "Đài Loan", "bao_hanh": "12 tháng"},
-      {"ten": "REDPUMP", "so_don": "4-2025-47109", "ngay_nop": "16/09/2025", "xuat_xu": "Trung Quốc", "bao_hanh": "12 tháng"},
-      {"ten": "AQUARIS", "so_don": "4-2025-47111", "ngay_nop": "16/09/2025", "xuat_xu": "Ý", "bao_hanh": "24 tháng"}
+      {
+        "ten": "PEROTAC",
+        "so_don": "4-2025-06562",
+        "ngay_nop": "24/02/2025",
+        "xuat_xu": "Đài Loan",
+        "bao_hanh": "12 tháng"
+      },
+      {
+        "ten": "REDPUMP",
+        "so_don": "4-2025-47109",
+        "ngay_nop": "16/09/2025",
+        "xuat_xu": "Trung Quốc",
+        "bao_hanh": "12 tháng"
+      },
+      {
+        "ten": "AQUARIS",
+        "so_don": "4-2025-47111",
+        "ngay_nop": "16/09/2025",
+        "xuat_xu": "Ý",
+        "bao_hanh": "24 tháng"
+      }
     ]
   },
   "can_anh_chot": [
@@ -39,7 +57,6 @@
     "Website: Hồ sơ năng lực ghi maybomchim.com; phần mềm báo giá ghi maybomtk.net. Các mẫu chưa in website.",
     "REDPUMP: công văn xuất xứ ghi Trung Kiên là nhà phân phối có giấy chứng nhận của hãng, Hồ sơ năng lực ghi Trung Kiên là người nộp đơn đăng ký nhãn hiệu. Cần chốt cách nói thống nhất.",
     "Mã ngành kinh doanh: trang GPKD đã nhận không có mục ngành nghề.",
-    "Số CCCD, ngày sinh, ngày cấp, nơi cấp của ông Trung: không lưu trong kho (bỏ theo yêu cầu 23/10/2026); giấy ủy quyền để trống, điền tay.",
-    "Địa chỉ giao hàng KCN Tiên Sơn (Bắc Ninh) theo địa giới mới: chờ khách xác nhận."
+    "Số CCCD, ngày sinh, ngày cấp, nơi cấp của ông Trung: không lưu trong kho (bỏ theo yêu cầu 23/10/2026); giấy ủy quyền để trống, điền tay."
   ]
 }

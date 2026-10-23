@@ -6,3 +6,4 @@
 - Anh Trung chuyển kho sang riêng tư; đã kiểm lại: private = true.
 - Theo yêu cầu anh Trung: bỏ số CCCD, ngày sinh, địa chỉ liên lạc cá nhân khỏi kho; giấy ủy quyền để trống các ô này.
 - Chưa lưu bản gốc GPKD (PDF) và HSNL (docx) vào kho; cần thì báo.
+- Anh Trung nhắc: công ty của anh chỉ là Trung Kiên, các công ty khác là khách hàng. Đã rà: 8 mẫu không có thông tin khách nào; bỏ việc của khách (địa chỉ giao hàng Tiên Sơn, giấy ủy quyền Phó Giám đốc Thủy sản Quảng Ninh) khỏi danh sách việc của công ty. Chờ anh xác nhận Thịnh Vượng (mục 1.2 hồ sơ) là của anh hay của khách.
