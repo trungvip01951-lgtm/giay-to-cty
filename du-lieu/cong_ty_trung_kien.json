@@ -1,0 +1,45 @@
+{
+  "_ghi_chu": "Nguồn gốc duy nhất cho thông tin Trung Kiên. Lấy từ Giấy chứng nhận đăng ký doanh nghiệp (thay đổi lần 3, 09/06/2026), Hồ sơ năng lực 2026 và hồ sơ HoSo_ThongTinCongTy_VaMauGiayTo_TrungKien.md. Các mẫu trong mau-giay-to/ đọc từ tệp này bằng cong-cu/tao_mau.py.",
+  "cong_ty": {
+    "ten": "CÔNG TY TNHH THƯƠNG MẠI VÀ CÔNG NGHIỆP TRUNG KIÊN",
+    "ten_ngan": "Trung Kiên",
+    "ten_tieng_anh": "TRUNG KIEN INDUSTRIAL AND TRADING COMPANY LIMITED",
+    "loai_hinh": "Công ty trách nhiệm hữu hạn một thành viên",
+    "mst": "0109546164",
+    "dang_ky_lan_dau": "10/03/2021",
+    "thay_doi_gan_nhat": "lần 3, 09/06/2026",
+    "von_dieu_le": "10.000.000.000 đồng (Mười tỷ đồng)",
+    "dia_chi": "Số 5, Ngõ 196, Đường Thạch Bàn, Phường Long Biên, TP Hà Nội",
+    "dien_thoai": "096.432.9898",
+    "dia_diem_kinh_doanh_hcm": {
+      "ten": "Địa điểm kinh doanh số 02 (mã 00002)",
+      "dia_chi": "Số 484/5 Khu phố 62, Đường Hà Huy Giáp, Phường An Phú Đông, TP Hồ Chí Minh",
+      "nguoi_dung_dau": "Hà Cao Trí"
+    },
+    "ngan_hang": {
+      "chu_tk": "CÔNG TY TNHH THƯƠNG MẠI VÀ CÔNG NGHIỆP TRUNG KIÊN",
+      "so_tk": "1040801350",
+      "ten": "Ngân hàng TMCP Ngoại thương Việt Nam (Vietcombank) – CN Hà Nội – PGD số 2"
+    },
+    "dai_dien": {
+      "ho_ten": "Nguyễn Việt Trung",
+      "chuc_vu": "Giám đốc",
+      "gioi_tinh": "Nam",
+      "quoc_tich": "Việt Nam"
+    },
+    "nhan_hieu": [
+      {"ten": "PEROTAC", "so_don": "4-2025-06562", "ngay_nop": "24/02/2025", "xuat_xu": "Đài Loan", "bao_hanh": "12 tháng"},
+      {"ten": "REDPUMP", "so_don": "4-2025-47109", "ngay_nop": "16/09/2025", "xuat_xu": "Trung Quốc", "bao_hanh": "12 tháng"},
+      {"ten": "AQUARIS", "so_don": "4-2025-47111", "ngay_nop": "16/09/2025", "xuat_xu": "Ý", "bao_hanh": "24 tháng"}
+    ]
+  },
+  "can_anh_chot": [
+    "Email chính thức: GPKD ghi Maybomtk@gmail.com; Hồ sơ năng lực ghi bomgiengkhoan.online@gmail.com; công văn Sinotrans ghi BOMTRUNGKIEN.VN@GMAIL.COM. Các mẫu giấy tờ chưa in email.",
+    "Hotline/Zalo: hợp đồng, GPKD dùng 096.432.9898; Hồ sơ năng lực dùng 0976 554 969. Các mẫu dùng 096.432.9898.",
+    "Website: Hồ sơ năng lực ghi maybomchim.com; phần mềm báo giá ghi maybomtk.net. Các mẫu chưa in website.",
+    "REDPUMP: công văn xuất xứ ghi Trung Kiên là nhà phân phối có giấy chứng nhận của hãng, Hồ sơ năng lực ghi Trung Kiên là người nộp đơn đăng ký nhãn hiệu. Cần chốt cách nói thống nhất.",
+    "Mã ngành kinh doanh: trang GPKD đã nhận không có mục ngành nghề.",
+    "Số CCCD, ngày sinh, ngày cấp, nơi cấp của ông Trung: không lưu trong kho (bỏ theo yêu cầu 23/10/2026); giấy ủy quyền để trống, điền tay.",
+    "Địa chỉ giao hàng KCN Tiên Sơn (Bắc Ninh) theo địa giới mới: chờ khách xác nhận."
+  ]
+}
