@@ -7,3 +7,5 @@
 - Toà án ghi "Tòa án nhân dân có thẩm quyền tại TP Hà Nội". Căn cứ luật ghi "Bộ luật Dân sự số 91/2015/QH13".
 - Thông tin công ty chỉ lấy từ du-lieu/cong_ty_trung_kien.json, không gõ lại tay.
 - Kho này riêng tư. Không đưa lên chế độ công khai; không lưu mật khẩu.
+- Thịnh Vượng là công ty của anh Trung; chỉ làm khi anh bảo, khi đó thay thông tin Trung Kiên bằng thông tin Thịnh Vượng (mục 1.2 hồ sơ). Các công ty còn lại là khách hàng. (27/10/2026)
+- Số điện thoại in giấy tờ Trung Kiên: 096.432.9898; không in email, website. REDPUMP: Trung Kiên là nhà phân phối. (27/10/2026)

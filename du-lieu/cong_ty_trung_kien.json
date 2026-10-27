@@ -51,12 +51,13 @@
       }
     ]
   },
-  "can_anh_chot": [
-    "Email chính thức: GPKD ghi Maybomtk@gmail.com; Hồ sơ năng lực ghi bomgiengkhoan.online@gmail.com; công văn Sinotrans ghi BOMTRUNGKIEN.VN@GMAIL.COM. Các mẫu giấy tờ chưa in email.",
-    "Hotline/Zalo: hợp đồng, GPKD dùng 096.432.9898; Hồ sơ năng lực dùng 0976 554 969. Các mẫu dùng 096.432.9898.",
-    "Website: Hồ sơ năng lực ghi maybomchim.com; phần mềm báo giá ghi maybomtk.net. Các mẫu chưa in website.",
-    "REDPUMP: công văn xuất xứ ghi Trung Kiên là nhà phân phối có giấy chứng nhận của hãng, Hồ sơ năng lực ghi Trung Kiên là người nộp đơn đăng ký nhãn hiệu. Cần chốt cách nói thống nhất.",
-    "Mã ngành kinh doanh: trang GPKD đã nhận không có mục ngành nghề.",
-    "Số CCCD, ngày sinh, ngày cấp, nơi cấp của ông Trung: không lưu trong kho (bỏ theo yêu cầu 23/10/2026); giấy ủy quyền để trống, điền tay."
-  ]
+  "da_chot_27_10_2026": {
+    "dien_thoai_in_giay_to": "096.432.9898",
+    "email_website_in_mau": "Không in",
+    "redpump": "Trung Kiên là nhà phân phối của hãng REDPUMP (có giấy chứng nhận nhà phân phối)",
+    "thinh_vuong": "Là công ty của anh Trung; chỉ làm khi anh bảo, khi đó dùng thông tin Thịnh Vượng thay cho Trung Kiên",
+    "ma_nganh": "Bỏ qua (không có trang 2 giấy phép)",
+    "giay_de_nghi_fata": "Xác nhận: FATA đã trả 130.356.000; hàng đã giao đủ; ngày lập 27/10/2026",
+    "chua_luu": "Số CCCD, ngày sinh, ngày cấp, nơi cấp của ông Trung: không lưu trong kho, giấy ủy quyền điền tay"
+  }
 }
