@@ -7,3 +7,4 @@
 - Theo yêu cầu anh Trung: bỏ số CCCD, ngày sinh, địa chỉ liên lạc cá nhân khỏi kho; giấy ủy quyền để trống các ô này.
 - Chưa lưu bản gốc GPKD (PDF) và HSNL (docx) vào kho; cần thì báo.
 - Anh Trung nhắc: công ty của anh chỉ là Trung Kiên, các công ty khác là khách hàng. Đã rà: 8 mẫu không có thông tin khách nào; bỏ việc của khách (địa chỉ giao hàng Tiên Sơn, giấy ủy quyền Phó Giám đốc Thủy sản Quảng Ninh) khỏi danh sách việc của công ty. Chờ anh xác nhận Thịnh Vượng (mục 1.2 hồ sơ) là của anh hay của khách.
+- 27/10/2026: làm Giấy đề nghị thanh toán phần còn lại HĐ HĐKT102026-TK-H (Trung Kiên bán, Công ty CP Công nghệ FATA mua): 160.812.000 đồng = 291.168.000 (sau Phụ lục 01) - 130.356.000 (đã trả 50% hợp đồng gốc). Khớp bảng công nợ FATA (hóa đơn 00002771 ngày 17/10/2026). Tệp: giay-to-khach-hang/FATA/. Công cụ: cong-cu/tao_denghi_fata.py.
