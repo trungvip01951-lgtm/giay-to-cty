@@ -10,3 +10,6 @@
 - Thịnh Vượng là công ty của anh Trung; chỉ làm khi anh bảo, khi đó thay thông tin Trung Kiên bằng thông tin Thịnh Vượng (mục 1.2 hồ sơ). Các công ty còn lại là khách hàng. (27/10/2026)
 - Số điện thoại in giấy tờ Trung Kiên: 096.432.9898; không in email, website. REDPUMP: Trung Kiên là nhà phân phối. (27/10/2026)
 - Dấu tròn, chữ ký, dấu chức danh/họ tên của Giám đốc: chỉ chèn vào giấy tờ khi anh Trung bảo, từng giấy một. Ảnh dấu/chữ ký KHÔNG lưu trong kho GitHub (anh đưa ảnh khi cần, hoặc nhắn "lưu lên kho"). (27/10/2026)
+- Cách làm việc (anh Trung chốt 27/10/2026): cứ làm, không hỏi dài dòng; chỉ hỏi khi thật cần thiết. Báo ngắn.
+- Giấy đề nghị thanh toán có dấu: bản hiện tại (dấu tròn 40 mm, chữ ký, dấu chức danh căn giữa khối ký bên Giám đốc) đã được duyệt, dùng cho các giấy sau. (27/10/2026)
+- Hợp đồng/phụ lục PDF: chèn dấu giáp lai (dấu tròn 40 mm chia đều thành từng lát, mỗi trang một lát sát mép phải, giữa trang) và dấu + chữ ký ở khối "ĐẠI DIỆN BÊN BÁN" trang cuối: python3 cong-cu/chen_dau_pdf.py. Không sửa nội dung hợp đồng của khách. (27/10/2026)
