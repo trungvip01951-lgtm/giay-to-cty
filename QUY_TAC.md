@@ -9,3 +9,4 @@
 - Kho này riêng tư. Không đưa lên chế độ công khai; không lưu mật khẩu.
 - Thịnh Vượng là công ty của anh Trung; chỉ làm khi anh bảo, khi đó thay thông tin Trung Kiên bằng thông tin Thịnh Vượng (mục 1.2 hồ sơ). Các công ty còn lại là khách hàng. (27/10/2026)
 - Số điện thoại in giấy tờ Trung Kiên: 096.432.9898; không in email, website. REDPUMP: Trung Kiên là nhà phân phối. (27/10/2026)
+- Dấu tròn, chữ ký, dấu chức danh/họ tên của Giám đốc: chỉ chèn vào giấy tờ khi anh Trung bảo, từng giấy một. Ảnh dấu/chữ ký KHÔNG lưu trong kho GitHub (anh đưa ảnh khi cần, hoặc nhắn "lưu lên kho"). (27/10/2026)
