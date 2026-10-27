@@ -4,6 +4,7 @@ Chạy: python3 cong-cu/tao_mau.py   -> ghi vào mau-giay-to/
 Mọi thông tin công ty lấy từ JSON, không gõ lại trong mã."""
 import json
 import pathlib
+import sys
 from docx import Document
 from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.enum.text import WD_ALIGN_PARAGRAPH
@@ -13,10 +14,20 @@ from docx.shared import Cm, Pt
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "mau-giay-to"
+OUT_DIR = None
 TK = json.load(open(ROOT / "du-lieu/cong_ty_trung_kien.json", encoding="utf-8"))["cong_ty"]
 DD = TK["dai_dien"]
 BANK = TK["ngan_hang"]
 FONT = "Times New Roman"
+# Dấu + chữ ký (ảnh PNG ghép, KHÔNG lưu trong kho). Đặt ANH_DAU = đường dẫn để chèn vào khối ký của Giám đốc.
+ANH_DAU = None
+SEAL_CM = 4.0                 # đường kính dấu tròn ngoài thực tế (giả định 40 mm, chờ anh đo dấu thật)
+SEAL_PX, GHEP_PX = 575, (998, 780)   # đường kính dấu và kích thước ảnh ghép dau_chu_ky_moi_ghep.png
+
+
+def stamp_size():
+    k = SEAL_CM / SEAL_PX
+    return GHEP_PX[0] * k, GHEP_PX[1] * k   # (rộng cm, cao cm)
 C, L, R, J = (WD_ALIGN_PARAGRAPH.CENTER, WD_ALIGN_PARAGRAPH.LEFT,
               WD_ALIGN_PARAGRAPH.RIGHT, WD_ALIGN_PARAGRAPH.JUSTIFY)
 
@@ -30,7 +41,7 @@ def new_doc():
     s = d.sections[0]
     s.page_width, s.page_height = Cm(21), Cm(29.7)
     s.top_margin = s.bottom_margin = Cm(2)
-    s.left_margin, s.right_margin = Cm(3), Cm(1.8)
+    s.left_margin, s.right_margin = Cm(3), Cm(2)
     st = d.styles["Normal"]
     st.font.name, st.font.size = FONT, Pt(12)
     st.element.rPr.rFonts.set(qn("w:eastAsia"), FONT)
@@ -116,7 +127,9 @@ def table(d, headers, rows, widths, size=12, center_cols=()):
             p.alignment = C if i in center_cols else L
             run(p, v, size=size, bold=str(v).startswith("Tổng") or str(v).startswith("Cộng"))
     fix_layout(t, widths)
-    d.add_paragraph().paragraph_format.space_after = Pt(2)
+    gap = d.add_paragraph()
+    gap.paragraph_format.space_after = Pt(0)
+    gap.paragraph_format.line_spacing = Pt(6)
     return t
 
 
@@ -176,6 +189,12 @@ def sign_block(d, left, right, left_note="(Ký, ghi rõ họ tên và đóng d�
         p = c.paragraphs[0]
         p.alignment = C
         run(p, title_, bold=True)
+        if i == 1 and ANH_DAU and name == DD["ho_ten"]:
+            q = c.add_paragraph()
+            q.alignment = C
+            q.paragraph_format.space_after = Pt(0)
+            q.add_run().add_picture(str(ANH_DAU), width=Cm(stamp_size()[0]))
+            continue
         q = c.add_paragraph()
         q.alignment = C
         run(q, note, italic=True, size=12)
@@ -189,7 +208,9 @@ def sign_block(d, left, right, left_note="(Ký, ghi rõ họ tên và đóng d�
     for c in t.rows[0].cells:
         for q in c.paragraphs[:-1]:
             q.paragraph_format.keep_with_next = True
-    d.add_paragraph()
+    tail = d.add_paragraph()
+    tail.paragraph_format.space_after = Pt(0)
+    tail.paragraph_format.line_spacing = Pt(6)
 
 
 def giamdoc_block(d):
@@ -198,8 +219,9 @@ def giamdoc_block(d):
 
 
 def save(d, name):
-    OUT.mkdir(exist_ok=True)
-    p = OUT / name
+    out = pathlib.Path(OUT_DIR) if OUT_DIR else OUT
+    out.mkdir(parents=True, exist_ok=True)
+    p = out / (name.replace(".docx", "_CoDau.docx") if ANH_DAU else name)
     d.save(p)
     return p
 
@@ -364,14 +386,18 @@ def gioi_thieu():
         run(l.add_paragraph(), s, size=12)
     r.paragraphs[0].alignment = C
     run(r.paragraphs[0], TK["ten"], bold=True, size=12)
-    q = r.add_paragraph(); q.alignment = C
-    run(q, "GIÁM ĐỐC", bold=True)
-    q = r.add_paragraph(); q.alignment = C
-    run(q, "(Ký, ghi rõ họ tên và đóng dấu)", italic=True, size=12)
-    for _ in range(4):
-        r.add_paragraph()
-    q = r.add_paragraph(); q.alignment = C
-    run(q, DD["ho_ten"], bold=True)
+    if ANH_DAU:
+        q = r.add_paragraph(); q.alignment = C
+        q.add_run().add_picture(str(ANH_DAU), width=Cm(stamp_size()[0]))
+    else:
+        q = r.add_paragraph(); q.alignment = C
+        run(q, "GIÁM ĐỐC", bold=True)
+        q = r.add_paragraph(); q.alignment = C
+        run(q, "(Ký, ghi rõ họ tên và đóng dấu)", italic=True, size=12)
+        for _ in range(4):
+            r.add_paragraph()
+        q = r.add_paragraph(); q.alignment = C
+        run(q, DD["ho_ten"], bold=True)
     return save(d, "GiayGioiThieu_TrungKien.docx")
 
 
@@ -506,5 +532,8 @@ def nhan_hang_nk():
 
 
 if __name__ == "__main__":
+    # python3 cong-cu/tao_mau.py [anh_dau.png thu_muc_ra]   (có ảnh: tạo bản có dấu, chữ ký ở thu_muc_ra)
+    if len(sys.argv) > 2:
+        ANH_DAU, OUT_DIR = sys.argv[1], sys.argv[2]
     for f in (thanh_ly, nghiem_thu, uy_quyen, gioi_thieu, phu_luc, cong_no, don_dat_hang, nhan_hang_nk):
         print(f().name)

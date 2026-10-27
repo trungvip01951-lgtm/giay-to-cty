@@ -13,3 +13,4 @@
 - REDPUMP: Trung Kiên là nhà phân phối của hãng.
 - Thịnh Vượng là công ty của anh: "khi nào a bảo làm thịnh vượng thì e lấy thông tin này thay cho trung kiên".
 - Mã ngành: bỏ qua. Giấy đề nghị FATA: đúng (đã trả 130.356.000, hàng đã giao đủ, ngày 27/10/2026). Cho phép push lên GitHub.
+- 27/10/2026: chuẩn hóa bố cục theo Nghị định 30/2020/NĐ-CP (Phụ lục I): A4, lề trên/dưới 20 mm, trái 30 mm, phải 20 mm. Khối ký: hai cột bằng nhau, tiêu đề căn giữa cột. Có dấu: dấu tròn đường kính 40 mm (giả định, chờ anh đo dấu thật), chữ ký và dấu chức danh căn giữa khối ký bên Giám đốc. Chạy: python3 cong-cu/tao_mau.py anh_dau.png thu_muc_ra (ảnh không lưu trong kho).

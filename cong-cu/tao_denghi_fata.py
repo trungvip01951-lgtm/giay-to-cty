@@ -72,9 +72,6 @@ assert doc_so(130_356_000) == "Một trăm ba mươi triệu ba trăm năm mươ
 def build(anh_dau=None, out_dir=None):
     """anh_dau: đường dẫn ảnh PNG dấu+chữ ký (không lưu trong kho). Không có thì chừa trống để ký tay."""
     d = m.new_doc()
-    sec = d.sections[0]
-    sec.top_margin = sec.bottom_margin = m.Cm(1.5)
-    sec.left_margin, sec.right_margin = m.Cm(2.5), m.Cm(1.5)
     m.quoc_hieu(d)
     m.header_cty(d)
     m.para(d, f"Hà Nội, ngày {NGAY_LAP[0]} tháng {NGAY_LAP[1]} năm {NGAY_LAP[2]}", italic=True, align=m.R, after=6)
@@ -82,34 +79,20 @@ def build(anh_dau=None, out_dir=None):
     m.mixed(d, [("Kính gửi: ", True), ("CÔNG TY CỔ PHẦN CÔNG NGHỆ FATA", True)])
     m.para(d, "Địa chỉ: Lô CN01, KCN Thụy Vân, xã Hy Cương, tỉnh Phú Thọ, Việt Nam", after=0)
     m.para(d, "Mã số thuế: 2601102666", after=6)
-    m.para(d, f"Căn cứ Hợp đồng kinh tế số {HD_SO} ký ngày {HD_NGAY} giữa hai bên về việc cung cấp máy bơm nước AQUARIS (Italy) gồm 03 máy model CM65-160/15 và 04 máy model AQR65-200/15;")
-    m.para(d, f"Căn cứ Phụ lục hợp đồng số {PL_SO} ký ngày {PL_NGAY} bổ sung 01 máy bơm model CM65-160/15 (sau bổ sung: 04 máy CM65-160/15 và 04 máy AQR65-200/15);")
+    m.para(d, f"Căn cứ Hợp đồng kinh tế số {HD_SO} ký ngày {HD_NGAY} và Phụ lục hợp đồng số {PL_SO} ký ngày {PL_NGAY} về việc cung cấp máy bơm nước AQUARIS (Italy): 04 máy CM65-160/15 và 04 máy AQR65-200/15 (sau bổ sung);")
     m.para(d, f"Căn cứ Hóa đơn GTGT số {HOADON_SO} ngày {HOADON_NGAY} và Điều 2 của Hợp đồng (giá trị còn lại thanh toán sau khi bên B giao hàng và hoàn thiện hồ sơ thanh toán, trong vòng 2-3 ngày),")
     m.para(d, "chúng tôi kính đề nghị Quý Công ty thanh toán phần giá trị còn lại của Hợp đồng như sau:", after=4)
     m.table(d, ["Nội dung", "Số tiền (đồng)"],
-            [["Tổng giá trị Hợp đồng sau bổ sung (đã gồm VAT 8%)", so(TONG)],
+            [["Giá trị Hợp đồng gốc (đã gồm VAT 8%)", so(HD_GOC)],
+             ["Giá trị bổ sung theo Phụ lục (đã gồm VAT 8%)", so(BO_SUNG)],
+             ["Tổng giá trị Hợp đồng sau bổ sung", so(TONG)],
              ["Đã thanh toán (50% giá trị Hợp đồng gốc)", so(DA_TT)],
              ["Số tiền đề nghị thanh toán lần này", so(CON_LAI)]],
             [11.0, 4.5], size=12, center_cols=(1,))
-    m.para(d, f"Trong đó: {so(DA_TT)} đồng là 50% giá trị còn lại của Hợp đồng gốc và {so(BO_SUNG)} đồng là giá trị bổ sung theo Phụ lục (đã gồm VAT 8%).")
     m.para(d, f"Bằng chữ: {doc_so(CON_LAI)}.", bold=True)
-    m.para(d, "Thời hạn thanh toán: Theo Điều 2 của Hợp đồng và Phụ lục hợp đồng.")
-    m.para(d, "Kính đề nghị Quý Công ty chuyển khoản theo thông tin sau:", after=2)
-    m.para(d, f"Đơn vị thụ hưởng: {BANK['chu_tk']}", after=0)
-    m.para(d, f"Số tài khoản: {BANK['so_tk']}", after=0)
-    m.para(d, f"Ngân hàng: {BANK['ten']}.", after=0)
-    m.para(d, f"Nội dung chuyển khoản: Thanh toán phần còn lại hợp đồng {HD_SO}.", after=6)
-    m.para(d, "Trân trọng cảm ơn Quý Công ty!", after=2)
-    m.para(d, "ĐẠI DIỆN BÊN ĐỀ NGHỊ THANH TOÁN", bold=True, align=m.R, after=0)
-    if anh_dau:
-        pp = m.para(d, align=m.R, after=0)
-        pp.add_run().add_picture(str(anh_dau), width=m.Cm(5.1))
-    else:
-        m.para(d, "GIÁM ĐỐC", bold=True, align=m.R, after=0)
-        m.para(d, "(Ký, ghi rõ họ tên và đóng dấu)", italic=True, align=m.R, after=0)
-        for _ in range(3):
-            m.para(d, "", after=0)
-        m.para(d, DD["ho_ten"], bold=True, align=m.R)
+    m.para(d, f"Thời hạn thanh toán: theo Điều 2 của Hợp đồng và Phụ lục hợp đồng. Kính đề nghị Quý Công ty chuyển khoản cho {BANK['chu_tk']}, số tài khoản {BANK['so_tk']} tại {BANK['ten']}; nội dung: Thanh toán phần còn lại hợp đồng {HD_SO}. Trân trọng cảm ơn Quý Công ty!", after=4)
+    m.ANH_DAU = anh_dau
+    m.sign_block(d, "", "BÊN ĐỀ NGHỊ THANH TOÁN", left_note="", right_name=DD["ho_ten"], gap=3)
     o = pathlib.Path(out_dir) if out_dir else OUT
     o.mkdir(parents=True, exist_ok=True)
     p = o / (f"DeNghiThanhToan_ConLai_{HD_SO}" + ("_CoDau" if anh_dau else "") + ".docx")
