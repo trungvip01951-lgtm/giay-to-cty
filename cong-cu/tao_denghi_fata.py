@@ -69,7 +69,8 @@ assert doc_so(CON_LAI) == "Một trăm sáu mươi triệu tám trăm mười ha
 assert doc_so(130_356_000) == "Một trăm ba mươi triệu ba trăm năm mươi sáu nghìn đồng"
 
 
-def build():
+def build(anh_dau=None, out_dir=None):
+    """anh_dau: đường dẫn ảnh PNG dấu+chữ ký (không lưu trong kho). Không có thì chừa trống để ký tay."""
     d = m.new_doc()
     sec = d.sections[0]
     sec.top_margin = sec.bottom_margin = m.Cm(1.5)
@@ -100,16 +101,22 @@ def build():
     m.para(d, f"Nội dung chuyển khoản: Thanh toán phần còn lại hợp đồng {HD_SO}.", after=6)
     m.para(d, "Trân trọng cảm ơn Quý Công ty!", after=2)
     m.para(d, "ĐẠI DIỆN BÊN ĐỀ NGHỊ THANH TOÁN", bold=True, align=m.R, after=0)
-    m.para(d, "GIÁM ĐỐC", bold=True, align=m.R, after=0)
-    m.para(d, "(Ký, ghi rõ họ tên và đóng dấu)", italic=True, align=m.R, after=0)
-    for _ in range(3):
-        m.para(d, "", after=0)
-    m.para(d, DD["ho_ten"], bold=True, align=m.R)
-    OUT.mkdir(parents=True, exist_ok=True)
-    p = OUT / f"DeNghiThanhToan_ConLai_{HD_SO}.docx"
+    if anh_dau:
+        pp = m.para(d, align=m.R, after=0)
+        pp.add_run().add_picture(str(anh_dau), width=m.Cm(5.1))
+    else:
+        m.para(d, "GIÁM ĐỐC", bold=True, align=m.R, after=0)
+        m.para(d, "(Ký, ghi rõ họ tên và đóng dấu)", italic=True, align=m.R, after=0)
+        for _ in range(3):
+            m.para(d, "", after=0)
+        m.para(d, DD["ho_ten"], bold=True, align=m.R)
+    o = pathlib.Path(out_dir) if out_dir else OUT
+    o.mkdir(parents=True, exist_ok=True)
+    p = o / (f"DeNghiThanhToan_ConLai_{HD_SO}" + ("_CoDau" if anh_dau else "") + ".docx")
     d.save(p)
     return p
 
 
 if __name__ == "__main__":
-    print(build())
+    # python3 cong-cu/tao_denghi_fata.py [anh_dau.png thu_muc_ra]
+    print(build(*(sys.argv[1:3])) if len(sys.argv) > 2 else build())
