@@ -1,0 +1,6 @@
+python-docx
+pypdf
+reportlab
+Pillow
+numpy
+# công cụ hệ thống: libreoffice (soffice), poppler-utils (pdftotext, pdftoppm, pdfinfo), ImageMagick (montage, chỉ để xem thử)
