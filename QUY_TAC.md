@@ -13,3 +13,4 @@
 - Cách làm việc (anh Trung chốt 27/10/2026): cứ làm, không hỏi dài dòng; chỉ hỏi khi thật cần thiết. Báo ngắn.
 - Giấy đề nghị thanh toán có dấu: bản hiện tại (dấu tròn 40 mm, chữ ký, dấu chức danh căn giữa khối ký bên Giám đốc) đã được duyệt, dùng cho các giấy sau. (27/10/2026)
 - Hợp đồng/phụ lục PDF: chèn dấu giáp lai (dấu tròn 40 mm chia đều thành từng lát, mỗi trang một lát sát mép phải, giữa trang) và dấu + chữ ký ở khối "ĐẠI DIỆN BÊN BÁN" trang cuối: python3 cong-cu/chen_dau_pdf.py. Không sửa nội dung hợp đồng của khách. (27/10/2026)
+- Mọi bản có chèn dấu (đề nghị thanh toán, hợp đồng, phụ lục...) làm thêm bản "Scan" trông như mới quét: nền giấy hơi ngả, mờ nhẹ, lệch trang rất nhẹ: python3 cong-cu/lam_ban_scan.py vao_CoDau.pdf ra_Scan.pdf. Gửi anh bản Scan cùng bản có dấu. (anh Trung chốt 28/10/2026)
