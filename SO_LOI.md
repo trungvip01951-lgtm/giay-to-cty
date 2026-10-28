@@ -7,3 +7,4 @@
 | 23/10/2026 | Tên ngân hàng ghi 3 kiểu khác nhau | Thống nhất một kiểu |
 | 23/10/2026 | Mẫu 3.2/3.3 thiếu quốc hiệu, khác 3.6/3.9 | Thêm quốc hiệu |
 | 23/10/2026 | 3.4: Phó Giám đốc bên B ký nhưng chưa ghi giấy ủy quyền | Thêm dòng "theo Giấy ủy quyền số... ngày..." |
+| 28/10/2026 | Báo giá BG-28102026-006 (phần mềm báo giá) ghi "PDG số 2" thay vì "PGD số 2" | Chưa sửa (cần sửa trong phần mềm báo giá) |
