@@ -1,0 +1,23 @@
+{
+  "khach": {
+    "ten": "CÔNG TY TNHH TIẾN ĐẠI",
+    "ten_hoa_don": "CÔNG TY TRÁCH NHIỆM HỮU HẠN TIẾN ĐẠI",
+    "mst": "0200447853",
+    "dia_chi": "Thôn Câu Đông, xã An Quang, TP Hải Phòng, Việt Nam",
+    "dia_chi_cu": "Thôn Câu Đông, xã Quang Trung, huyện An Lão, Thành phố Hải Phòng, Việt Nam",
+    "stk": "110000121971",
+    "ngan_hang": "Ngân hàng Vietinbank, chi nhánh Kiến An, Hải Phòng",
+    "dai_dien": "Nguyễn Tiến Đại",
+    "chuc_vu": "Giám đốc",
+    "email_hoa_don": "congtytiendaihddt@gmail.com",
+    "nhan_ho_so": "Công ty TNHH Tiến Đại, Thôn Câu Đông, xã An Quang, TP Hải Phòng, Việt Nam",
+    "ke_toan": "Ms Luyến: 0915.264.659; Ms Hương: 0915.144.219 / 0326.126.865"
+  },
+  "hoa_don": {"so": "00002469", "ky_hieu": "1C26TYY", "ngay": "18/09/2026"},
+  "hang": [
+    {"ten": "Máy bơm nước, model: SVm-1500F", "dvt": "cái", "sl": 2, "don_gia": 4500000},
+    {"ten": "Ống cốt dù phủ nhựa PVC, DK65mm", "dvt": "mét", "sl": 100, "don_gia": 17000}
+  ],
+  "vat_phan_tram": 8,
+  "kiem_tra_hoa_don": {"cong_tien_hang": 10700000, "tien_thue": 856000, "tong": 11556000}
+}
