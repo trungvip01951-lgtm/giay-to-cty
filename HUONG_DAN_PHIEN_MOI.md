@@ -9,6 +9,7 @@
 | Đề nghị thanh toán theo báo giá (100% hoặc tỷ lệ khác) | Tạo giay-to-khach-hang/<khach>/don_<số báo giá>.json (mẫu: giay-to-khach-hang/HoangVienQuangBa/don_BG-28102026-006.json) rồi `python3 cong-cu/tao_denghi_100.py don.json dau-chu-ky/dau_chu_ky_moi_ghep.png`; đổi sang PDF rồi làm bản Scan |
 | Hợp đồng mua bán 100% + biên bản giao nhận cho đơn đã xuất hóa đơn | Tạo giay-to-khach-hang/<khach>/don_<hóa đơn>.json (mẫu: giay-to-khach-hang/TienDai/don_HD00002469.json, có kiểm tra tổng tiền khớp hóa đơn) rồi `python3 cong-cu/tao_hopdong_giaonhan.py don.json [anh_dau.png]`. Điều khoản chuẩn lấy từ mục 3.5 hồ sơ. Số và ngày hợp đồng để trống cho anh điền (không tự điền ngày lùi) |
 | Bảng công nợ (Excel) | File làm việc của anh: cong-no/CongNo_TrungKien.xlsx (6 sheet: TongHop, DonHang, ChiTiet, ThuTien, KhachHang, HuongDan). Anh nhập dữ liệu thật vào file này; KHÔNG chạy lại cong-cu/tao_bang_cong_no.py đè lên (script chỉ để tạo mẫu ban đầu). Nhờ cập nhật: đọc file anh gửi, sửa bằng openpyxl, giữ công thức |
+| Công nợ riêng một khách (mỗi đơn một sheet) | cong-no/CongNo_ThuLien.xlsx (Thu Liên). Khách khác: sửa KHACH trong cong-cu/tao_cong_no_mot_khach.py, chạy với tên tệp ra mới. Thêm đơn = sao chép sheet MAU_DON, đổi tên = mã đơn, gõ mã đơn vào cột B TongQuan. Không chạy lại đè file anh đang dùng |
 | Ảnh dấu/chữ ký mới | `python3 cong-cu/tach_nen_muc.py anh.jpg ra.png do|xanh [tam_x,tam_y,ban_kinh]` |
 ## Thông số đã chốt
 - A4, lề trên/dưới 20 mm, trái 30 mm, phải 20 mm (NĐ 30/2020/NĐ-CP, Phụ lục I). Times New Roman 12.
