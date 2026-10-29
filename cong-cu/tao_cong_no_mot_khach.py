@@ -18,22 +18,15 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 VBA_DIR = ROOT / "cong-cu" / "vba"
 KHACH = {"ten": "Công ty TNHH vật tư thiết bị Thu Liên", "dia_chi": "Hà Nội", "mst": "", "lien_he": ""}
 DS_DON_MAU = [{"ten": "ĐH-2610-003", "noi_dung": "Đơn hàng Dương Kính",
-               "ghi_chu": "VÍ DỤ thật từ phiếu xuất kho: chưa có đơn giá, ngày đơn",
+               "ghi_chu": "VÍ DỤ thật từ phiếu xuất kho: chưa có ngày đơn",
                "hang": [("Máy bơm hỏa tiễn 6SA35/6", 2), ("Máy bơm chìm 200WQ600-12-37", 2)]}]
-BANG_GIA = [  # nhóm, model, giá chưa VAT, ghi chú (giá anh Trung gửi 29/10/2026; nhóm theo dòng model)
-    ("Bơm trục ngang CM", "CM40-160/4", 6200000, ""), ("Bơm trục ngang CM", "CM40-250/11", 13700000, ""),
-    ("Bơm trục ngang CM", "CM50-160/5.5", 8500000, ""),
-    ("Bơm trục đứng CDLF", "CDLF16-8", 20500000, ""), ("Bơm trục đứng CDLF", "CDLF32-12", 52000000, ""),
-    ("Bơm giếng khoan (hỏa tiễn) 6SA/6SP", "6SA30/6", 10200000, ""), ("Bơm giếng khoan (hỏa tiễn) 6SA/6SP", "6SP30-5", 11800000, ""),
-    ("Bơm giếng khoan (hỏa tiễn) 6SA/6SP", "6SP30-7", 13500000, ""),
-    ("Bơm chìm nước thải WB/WC/WQ", "50WC15-15-1.5", 3800000, ""), ("Bơm chìm nước thải WB/WC/WQ", "80WB50-15-4", 6300000, ""),
-    ("Bơm chìm nước thải WB/WC/WQ", "150WC150-15-11", 16000000, ""), ("Bơm chìm nước thải WB/WC/WQ", "150WC150-25-15", 18500000, ""),
-    ("Bơm chìm nước thải WB/WC/WQ", "200WQ600-12-37", 69000000, ""),
-    ("Khác (anh xác nhận nhóm)", "65DVS53.7", 22000000, ""), ("Khác (anh xác nhận nhóm)", "MB300", 4600000, ""),
-    ("Khác (anh xác nhận nhóm)", "SFm6-18-0.55F", 1850000, ""),
-    ("Phụ kiện", "Bình tích áp 200L", 5800000, "Trong danh sách anh gửi có 1 dòng 6.000.000"),
-    ("Phụ kiện", "Bình tích áp 300L", 7500000, "Trong danh sách anh gửi có 1 dòng 7.300.000"),
-    ("Phụ kiện", "Khớp nối nhanh DN80", 3000000, "")]
+BANG_GIA = [  # model, giá chưa VAT (anh Trung gửi và chốt 29/10/2026); xếp các model cùng dòng liền nhau
+    ("CM40-160/4", 6200000), ("CM40-250/11", 13700000), ("CM50-160/5.5", 8500000),
+    ("CDLF16-8", 20500000), ("CDLF32-12", 52000000),
+    ("6SA35/6", 10200000), ("6SP30-5", 11800000), ("6SP30-7", 13500000),
+    ("50WC15-15-1.5", 3800000), ("80WB50-15-4", 6300000), ("150WC150-15-11", 16000000), ("150WC150-25-15", 18500000),
+    ("200WQ600-12-37", 69000000), ("65DVS53.7", 22000000), ("MB300", 4600000), ("SFm6-18-0.55F", 1850000),
+    ("Bình tích áp 200L", 5800000), ("Bình tích áp 300L", 7500000), ("Khớp nối nhanh DN80", 3000000)]
 BG1 = 500                            # bảng giá dùng dòng 2-500
 H0, H1, HD1 = 13, 32, 22             # dòng hàng hóa 13-32; bảng hóa đơn của đơn dòng 13-22
 CONG, THUE, TONG, HDSUM = H1 + 1, H1 + 2, H1 + 3, HD1 + 1
@@ -297,6 +290,7 @@ def tong_quan(wb, ws, f, ds):
     ch.set_y_axis({"num_format": "#,##0"})
     ch.set_size({"width": 900, "height": 300})
     ws.insert_chart(f"A{b + 3}", ch)
+    ws.print_area(f"A1:S{b}")
     ws.set_landscape()
     ws.set_paper(9)
     ws.fit_to_pages(1, 0)
@@ -304,31 +298,26 @@ def tong_quan(wb, ws, f, ds):
 
 def bang_gia(ws, f):
     ws.hide_gridlines(2)
-    for i, w in enumerate((30, 18, 34, 44)):
+    for i, w in enumerate((30, 18, 40)):
         ws.set_column(i, i, w)
     ws.set_row(0, 30)
-    for c, t in enumerate(("Model / tên hàng", "Giá chưa VAT", "Nhóm hàng", "Ghi chú")):
+    for c, t in enumerate(("Model / tên hàng", "Giá chưa VAT", "Ghi chú")):
         ws.write(0, c, t, f(bold=True, font_color="white", bg_color=NAVY, align="center"))
-    nhom_truoc, dai = None, 0
     for r in range(1, BG1):
+        nen = "#FFFFFF" if r % 2 else "#F3F8FC"
         if r - 1 < len(BANG_GIA):
-            nhom, model, gia, gc = BANG_GIA[r - 1]
-            if nhom != nhom_truoc:
-                dai, nhom_truoc = dai + 1, nhom
-            nen = "#FFFFFF" if dai % 2 else "#EAF1FB"
+            model, gia = BANG_GIA[r - 1]
             ws.write(r, 0, model, f(bg_color=nen, bold=True))
             ws.write_number(r, 1, gia, f(bg_color=nen, num_format="#,##0", align="right"))
-            ws.write(r, 2, nhom, f(bg_color=nen, font_color="#1F3864"))
-            ws.write(r, 3, gc, f(bg_color=nen, font_color="#C00000", italic=True)) if gc else ws.write_blank(r, 3, None, f(bg_color=nen))
         else:
-            for c, nf in ((0, None), (1, "#,##0"), (2, None), (3, None)):
-                ws.write_blank(r, c, None, f(num_format=nf) if nf else f())
+            ws.write_blank(r, 0, None, f(bg_color=nen, bold=True))
+            ws.write_blank(r, 1, None, f(bg_color=nen, num_format="#,##0", align="right"))
+        ws.write_blank(r, 2, None, f(bg_color=nen))
     ws.conditional_format(f"A2:A{BG1}", {"type": "duplicate", "format": f(bg_color="#FFC7CE", font_color="#9C0006")})
     ws.freeze_panes(1, 0)
-    ws.autofilter(f"A1:D{BG1}")
-    ws.write("F1", "Cách dùng: gõ thêm model, giá và nhóm vào dòng trống bên dưới. Các sheet đơn tự lấy giá gợi ý khi gõ đúng model "
-                   "(hoặc tên hàng có chứa model). Model bị trùng sẽ tô đỏ - chỉ giữ một dòng. Muốn xếp lại theo nhóm: bấm mũi tên lọc ở cột "
-                   "Nhóm hàng > Sắp xếp A-Z.", f(italic=True, border=0, text_wrap=False))
+    ws.autofilter(f"A1:C{BG1}")
+    ws.write("E1", "Cách dùng: gõ thêm model và giá vào dòng trống bên dưới. Các sheet đơn tự lấy giá gợi ý khi gõ đúng model "
+                   "(hoặc tên hàng có chứa model). Model bị trùng sẽ tô đỏ - chỉ giữ một dòng.", f(italic=True, border=0, text_wrap=False))
 
 
 def huong_dan(ws, f):
