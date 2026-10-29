@@ -20,17 +20,24 @@ KHACH = {"ten": "Công ty TNHH vật tư thiết bị Thu Liên", "dia_chi": "H�
 DS_DON_MAU = [{"ten": "ĐH-2610-003", "noi_dung": "Đơn hàng Dương Kính",
                "ghi_chu": "VÍ DỤ thật từ phiếu xuất kho: chưa có đơn giá, ngày đơn",
                "hang": [("Máy bơm hỏa tiễn 6SA35/6", 2), ("Máy bơm chìm 200WQ600-12-37", 2)]}]
-BANG_GIA = [  # model, giá chưa VAT, ghi chú (anh Trung gửi 29/10/2026)
-    ("CM40-160/4", 6200000, ""), ("Bình tích áp 200L", 5800000, "Trong danh sách anh gửi có 1 dòng 6.000.000"),
-    ("80WB50-15-4", 6300000, ""), ("Khớp nối nhanh DN80", 3000000, ""), ("CM50-160/5.5", 8500000, ""),
-    ("65DVS53.7", 22000000, ""), ("Bình tích áp 300L", 7500000, "Trong danh sách anh gửi có 1 dòng 7.300.000"),
-    ("6SP30-7", 13500000, ""), ("SFm6-18-0.55F", 1850000, ""), ("CDLF32-12", 52000000, ""), ("MB300", 4600000, ""),
-    ("6SP30-5", 11800000, ""), ("CM40-250/11", 13700000, ""), ("CDLF16-8", 20500000, ""), ("50WC15-15-1.5", 3800000, ""),
-    ("200WQ600-12-37", 69000000, ""), ("6SA30/6", 10200000, ""), ("150WC150-15-11", 16000000, ""),
-    ("150WC150-25-15", 18500000, "")]
+BANG_GIA = [  # nhóm, model, giá chưa VAT, ghi chú (giá anh Trung gửi 29/10/2026; nhóm theo dòng model)
+    ("Bơm trục ngang CM", "CM40-160/4", 6200000, ""), ("Bơm trục ngang CM", "CM40-250/11", 13700000, ""),
+    ("Bơm trục ngang CM", "CM50-160/5.5", 8500000, ""),
+    ("Bơm trục đứng CDLF", "CDLF16-8", 20500000, ""), ("Bơm trục đứng CDLF", "CDLF32-12", 52000000, ""),
+    ("Bơm giếng khoan (hỏa tiễn) 6SA/6SP", "6SA30/6", 10200000, ""), ("Bơm giếng khoan (hỏa tiễn) 6SA/6SP", "6SP30-5", 11800000, ""),
+    ("Bơm giếng khoan (hỏa tiễn) 6SA/6SP", "6SP30-7", 13500000, ""),
+    ("Bơm chìm nước thải WB/WC/WQ", "50WC15-15-1.5", 3800000, ""), ("Bơm chìm nước thải WB/WC/WQ", "80WB50-15-4", 6300000, ""),
+    ("Bơm chìm nước thải WB/WC/WQ", "150WC150-15-11", 16000000, ""), ("Bơm chìm nước thải WB/WC/WQ", "150WC150-25-15", 18500000, ""),
+    ("Bơm chìm nước thải WB/WC/WQ", "200WQ600-12-37", 69000000, ""),
+    ("Khác (anh xác nhận nhóm)", "65DVS53.7", 22000000, ""), ("Khác (anh xác nhận nhóm)", "MB300", 4600000, ""),
+    ("Khác (anh xác nhận nhóm)", "SFm6-18-0.55F", 1850000, ""),
+    ("Phụ kiện", "Bình tích áp 200L", 5800000, "Trong danh sách anh gửi có 1 dòng 6.000.000"),
+    ("Phụ kiện", "Bình tích áp 300L", 7500000, "Trong danh sách anh gửi có 1 dòng 7.300.000"),
+    ("Phụ kiện", "Khớp nối nhanh DN80", 3000000, "")]
 BG1 = 500                            # bảng giá dùng dòng 2-500
-H0, H1, T1 = 13, 32, 24              # dòng hàng hóa 13-32, dòng thu tiền 13-24
-CONG, THUE, TONG, DATHU = H1 + 1, H1 + 2, H1 + 3, T1 + 1
+H0, H1, HD1 = 13, 32, 22             # dòng hàng hóa 13-32; bảng hóa đơn của đơn dòng 13-22
+CONG, THUE, TONG, HDSUM = H1 + 1, H1 + 2, H1 + 3, HD1 + 1
+TT0, TT1 = 13, 212                   # TongQuan: bảng các lần thanh toán (cột O-S), 200 dòng
 TQ0, TQ1 = 13, 62                    # TongQuan: 50 đơn ở cột B dòng 13-62 (khớp hằng số trong Module1.bas)
 NAVY, BLUE, SKY, PALE, GREY = "#1F3864", "#2E75B6", "#DDEBF7", "#F3F8FC", "#F2F2F2"
 TIEN, NGAY = '#,##0;[Red]-#,##0;"-"', "dd/mm/yyyy"
@@ -87,17 +94,17 @@ def sheet_don(ws, f, don=None):
     ws.write_blank("C5", None, ngay)
     ws.write_formula("C9", f"=COUNTA(C{H0}:C{H1})", f(bold=True, bg_color=PALE, align="left"))
     ws.merge_range("F4:H4", None, nhap)
-    ws.merge_range("F6:H6", None, nhap)
     ws.merge_range("F8:H8", None, ngay)
     ws.write_blank("F5", None, ngay)
     ws.merge_range("G5:H5", None, nhap)
-    ws.write_blank("F7", None, nhap)
-    ws.merge_range("G7:H7", None, ngay)
+    o_cong_thuc(ws, "F6:H6", f'=IF(COUNTA(J{H0}:J{HD1})=0,"Chưa xuất","Đã xuất")', f(bold=True, bg_color=PALE, align="left"))
+    ws.write_formula("F7", f'=IF(COUNTA(J{H0}:J{HD1})=0,"",J{H0}&IF(COUNTA(J{H0}:J{HD1})>1," (+"&(COUNTA(J{H0}:J{HD1})-1)&" HĐ)",""))',
+                     f(bg_color=PALE, align="left"))
+    o_cong_thuc(ws, "G7:H7", f'=IF(K{H0}="","",K{H0})', f(bg_color=PALE, num_format=NGAY, align="left"))
     ws.data_validation("F4", {"validate": "list", "source": ["Chưa giao", "Giao một phần", "Đã giao"]})
-    ws.data_validation("F6", {"validate": "list", "source": ["Chưa xuất", "Đã xuất"]})
     # thẻ tiền và công nợ
     for r, t, ct in ((4, "Tiền hàng (chưa VAT)", f"=G{CONG}"), (6, "TỔNG CỘNG (gồm VAT)", f"=G{TONG}"),
-                     (7, "ĐÃ THU", f"=K{DATHU}"), (8, "CÒN NỢ", "=L6-L7")):
+                     (7, "ĐÃ THU", f"=SUMIF(TongQuan!$P${TT0}:$P${TT1},$C$4,TongQuan!$Q${TT0}:$Q${TT1})"), (8, "CÒN NỢ", "=L6-L7")):
         ws.merge_range(f"J{r}:K{r}", t, f(bold=r in (6, 8), bg_color=SKY))
         o_cong_thuc(ws, f"L{r}:M{r}", ct, f(bold=True, font_size=12 if r in (6, 8) else 10, bg_color=PALE, num_format=TIEN, align="right"))
     ws.write("J5", "Thuế VAT", f(bg_color=SKY))
@@ -116,12 +123,12 @@ def sheet_don(ws, f, don=None):
                 f(bold=True, font_size=12, bg_color=GREY, align="center"))
     # bảng hàng hóa và bảng thu tiền
     ws.merge_range(f"A{H0 - 2}:H{H0 - 2}", "HÀNG HÓA TRONG ĐƠN", tieu)
-    ws.merge_range(f"J{H0 - 2}:M{H0 - 2}", "CÁC LẦN KHÁCH THANH TOÁN", tieu)
+    ws.merge_range(f"J{H0 - 2}:M{H0 - 2}", "HÓA ĐƠN ĐÃ XUẤT CHO ĐƠN NÀY (gõ số HĐ)", tieu)
     dau = f(bold=True, bg_color=SKY, align="center")
     for c, t in zip("ABCDEFGH", ("STT", "Mã kho", "Mã hàng / Tên hàng, model", "ĐVT", "Số lượng", "Đơn giá (chưa VAT)\ngợi ý theo bảng giá",
                                   "Thành tiền (chưa VAT)", "Thành tiền (gồm VAT)")):
         ws.write(f"{c}{H0 - 1}", t, dau)
-    for c, t in zip("JKLM", ("Ngày thu", "Số tiền", "Hình thức", "Ghi chú / chứng từ")):
+    for c, t in zip("JKLM", ("Số hóa đơn", "Ngày HĐ", "Giá trị HĐ (gồm VAT)", "Ghi chú")):
         ws.write(f"{c}{H0 - 1}", t, dau)
     ws.set_row(H0 - 2, 44)
     for r in range(H0, H1 + 1):
@@ -146,16 +153,21 @@ def sheet_don(ws, f, don=None):
         else:
             ws.merge_range(f"A{r}:F{r}", t, f(bold=True, bg_color=SKY, align="right", font_size=sz))
         o_cong_thuc(ws, f"G{r}:H{r}", ct, f(bold=True, font_size=sz, bg_color=PALE, num_format=TIEN, align="right"))
-    for r in range(H0, T1 + 1):
-        ws.write_blank(f"J{r}", None, f(num_format=NGAY, align="center"))
-        ws.write_blank(f"K{r}", None, f(num_format=TIEN, align="right"))
-        ws.write_blank(f"L{r}", None, f(align="center"))
+    for r in range(H0, HD1 + 1):
+        ws.write_blank(f"J{r}", None, f(num_format="@", align="center", bold=True))
+        ws.write_blank(f"K{r}", None, f(num_format=NGAY, align="center"))
+        ws.write_blank(f"L{r}", None, f(num_format=TIEN, align="right"))
         ws.write_blank(f"M{r}", None, f())
     ws.data_validation(f"C{H0}:C{H1}", {"validate": "list", "source": f"=BangGia!$A$2:$A${BG1}", "show_error": False,
                                          "input_title": "Model", "input_message": "Chọn model trong bảng giá hoặc gõ tự do"})
-    ws.data_validation(f"L{H0}:L{T1}", {"validate": "list", "source": ["Chuyển khoản", "Tiền mặt", "Khác"]})
-    ws.write(f"J{DATHU}", "Đã thu", nhan_r)
-    ws.write_formula(f"K{DATHU}", f"=SUM(K{H0}:K{T1})", f(bold=True, bg_color=PALE, num_format=TIEN, align="right"))
+    ws.merge_range(f"J{HDSUM}:K{HDSUM}", "Tổng giá trị HĐ", nhan_r)
+    ws.write_formula(f"L{HDSUM}", f"=SUM(L{H0}:L{HD1})", f(bold=True, bg_color=PALE, num_format=TIEN, align="right"))
+    ws.write_formula(f"M{HDSUM}", f'=IF(L{HDSUM}=0,"",IF(L{HDSUM}=L6,"Khớp tổng đơn","LỆCH "&TEXT(L{HDSUM}-L6,"#,##0")))',
+                     f(bold=True, bg_color=PALE, align="center"))
+    ws.merge_range(f"J{HDSUM + 2}:M{HDSUM + 3}", "Các lần khách thanh toán: nhập ở sheet TongQuan (bảng bên phải, chọn đúng mã đơn). "
+                   "Ô ĐÃ THU ở trên tự cộng.", f(italic=True, font_color="#595959", border=0))
+    mau_to(ws, f"M{HDSUM}", f'ISNUMBER(SEARCH("LỆCH",$M${HDSUM}))', "#FF9999", f, "#7F0000", True)
+    mau_to(ws, f"M{HDSUM}", f'$M${HDSUM}="Khớp tổng đơn"', "#C6E0B4", f, "#375623", True)
     # màu cảnh báo
     mau_to(ws, f"F{H0}:F{H1}", f'AND($C{H0}<>"",$F{H0}="")', "#FFE699", f)
     mau_to(ws, "L8:M8", "$L$8>0", "#FCE4E4", f, "#C00000", True)
@@ -187,12 +199,12 @@ def sheet_don(ws, f, don=None):
 
 def tong_quan(wb, ws, f, ds):
     ws.hide_gridlines(2)
-    for i, w in enumerate((5, 15, 12, 32, 9, 16, 16, 16, 13, 12, 12, 34, 10)):
+    for i, w in enumerate((5, 15, 12, 32, 9, 16, 16, 16, 13, 18, 12, 34, 10, 2, 12, 15, 15, 14, 24)):
         ws.set_column(i, i, w)
     ws.set_row(0, 34)
-    ws.merge_range("A1:M1", "THEO DÕI ĐƠN HÀNG & CÔNG NỢ KHÁCH HÀNG",
+    ws.merge_range("A1:S1", "THEO DÕI ĐƠN HÀNG & CÔNG NỢ KHÁCH HÀNG",
                    f(bold=True, font_size=16, font_color="white", bg_color=NAVY, align="center"))
-    o_cong_thuc(ws, "A2:M2", '="Công ty TNHH Thương mại và Công nghiệp Trung Kiên  ·  cập nhật "&TEXT(TODAY(),"dd/mm/yyyy")',
+    o_cong_thuc(ws, "A2:S2", '="Công ty TNHH Thương mại và Công nghiệp Trung Kiên  ·  cập nhật "&TEXT(TODAY(),"dd/mm/yyyy")',
                 f(italic=True, font_size=9, font_color="#595959", align="center", border=0))
     for r, t, v in ((3, "Khách hàng", KHACH["ten"]), (4, "Địa chỉ", KHACH["dia_chi"]), (5, "Mã số thuế", KHACH["mst"]),
                     (6, "Liên hệ / ĐT", KHACH["lien_he"])):
@@ -214,7 +226,7 @@ def tong_quan(wb, ws, f, ds):
     ws.set_row(8, 36)
     df = f(font_color="#404040", bg_color=GREY, align="center")
     for rng, ct in (("A10:C10", f'="Chưa giao: "&COUNTIF(I{a}:I{b},"Chưa giao")&"  ·  Giao một phần: "&COUNTIF(I{a}:I{b},"Giao một phần")'),
-                    ("D10:G10", f'="Đã giao chưa xuất HĐ: "&COUNTIFS(I{a}:I{b},"Đã giao",J{a}:J{b},"<>Đã xuất")'),
+                    ("D10:G10", f'="Đã giao chưa xuất HĐ: "&COUNTIFS(I{a}:I{b},"Đã giao",J{a}:J{b},"Chưa xuất")'),
                     ("H10:J10", f'="Chưa thu đủ: "&COUNTIF(H{a}:H{b},">0")&" đơn"'),
                     ("K10:M10", f'="Thiếu giá: "&COUNTIF(L{a}:L{b},"*CHƯA CÓ GIÁ*")&" đơn"')):
         o_cong_thuc(ws, rng, ct, df)
@@ -239,7 +251,8 @@ def tong_quan(wb, ws, f, ds):
         for c, cell in (("F", "L6"), ("G", "L7"), ("H", "L8")):
             ws.write_formula(f"{c}{r}", lay(r, cell, True), f(bg_color=nen, align="right", num_format=TIEN))
         ws.write_formula(f"I{r}", lay(r, "F4"), f(bg_color=nen, align="center"))
-        ws.write_formula(f"J{r}", lay(r, "F6"), f(bg_color=nen, align="center"))
+        ws.write_formula(f"J{r}", f'=IF($B{r}="","",IFERROR(IF(INDIRECT("\'"&$B{r}&"\'!F6")="Đã xuất","HĐ "&INDIRECT("\'"&$B{r}&"\'!F7"),'
+                                  f'"Chưa xuất"),"Không thấy sheet"))', f(bg_color=nen, align="center"))
         ws.write_formula(f"K{r}", lay(r, "F8"), f(bg_color=nen, align="center", num_format=NGAY))
         ws.write_formula(f"L{r}", f'=IF(B{r}="","",IFERROR(SUBSTITUTE(INDIRECT("\'"&$B{r}&"\'!A10"),"CẦN LÀM:  ",""),"Không thấy sheet"))',
                          f(bg_color=nen))
@@ -252,8 +265,26 @@ def tong_quan(wb, ws, f, ds):
         mau_to(ws, f"L{a}:L{b}", f'ISNUMBER(SEARCH("{txt}",$L{a}))', bg, f, chu, True)
     mau_to(ws, f"L{a}:L{b}", f'$L{a}="Hoàn tất"', "#C6E0B4", f, "#375623", True)
     mau_to(ws, f"M{a}:M{b}", f"AND(ISNUMBER($M{a}),$M{a}>0)", "#FF9999", f, "#7F0000", True)
-    for c, v, bg in (("I", "Đã giao", "#C6E0B4"), ("I", "Chưa giao", "#FFE699"), ("J", "Đã xuất", "#C6E0B4"), ("J", "Chưa xuất", "#FFE699")):
+    for c, v, bg in (("I", "Đã giao", "#C6E0B4"), ("I", "Chưa giao", "#FFE699"), ("J", "Chưa xuất", "#FFE699")):
         mau_to(ws, f"{c}{a}:{c}{b}", f'${c}{a}="{v}"', bg, f)
+    mau_to(ws, f"J{a}:J{b}", f'LEFT($J{a},2)="HĐ"', "#C6E0B4", f)
+    # bảng các lần khách thanh toán (nhập ở đây; mỗi đơn tự cộng theo mã đơn)
+    ws.merge_range("O11:S11", "CÁC LẦN KHÁCH THANH TOÁN (nhập ở đây)", f(bold=True, font_color="white", bg_color="#375623"))
+    for c, t in zip("OPQRS", ("Ngày thu", "Mã đơn", "Số tiền", "Hình thức", "Ghi chú / chứng từ")):
+        ws.write(f"{c}12", t, f(bold=True, bg_color="#E2EFDA", align="center"))
+    for r in range(TT0, TT1 + 1):
+        nen = "#FFFFFF" if (r - TT0) % 2 == 0 else "#F6FAF3"
+        ws.write_blank(f"O{r}", None, f(bg_color=nen, num_format=NGAY, align="center"))
+        ws.write_blank(f"P{r}", None, f(bg_color=nen, align="center", bold=True))
+        ws.write_blank(f"Q{r}", None, f(bg_color=nen, num_format=TIEN, align="right"))
+        ws.write_blank(f"R{r}", None, f(bg_color=nen, align="center"))
+        ws.write_blank(f"S{r}", None, f(bg_color=nen))
+    ws.data_validation(f"P{TT0}:P{TT1}", {"validate": "list", "source": f"=$B${a}:$B${b}", "error_title": "Mã đơn",
+                                          "error_message": "Chọn mã đơn có trong danh sách đơn hàng bên trái"})
+    ws.data_validation(f"R{TT0}:R{TT1}", {"validate": "list", "source": ["Chuyển khoản", "Tiền mặt", "Khác"]})
+    o_cong_thuc(ws, "O10:S10", (f'="Tổng các lần thu: "&TEXT(SUM(Q{TT0}:Q{TT1}),"#,##0")&IF(SUM(Q{TT0}:Q{TT1})<>SUM(G{a}:G{b}),'
+                                f'"  ·  "&TEXT(SUM(Q{TT0}:Q{TT1})-SUM(G{a}:G{b}),"#,##0")&" CHƯA KHỚP MÃ ĐƠN","")'), df)
+    mau_to(ws, "O10:S10", 'ISNUMBER(SEARCH("CHƯA KHỚP",$O$10))', "#FF9999", f, "#7F0000", True)
     ws.conditional_format(f"H{a}:H{b}", {"type": "data_bar", "bar_color": "#F4B183", "bar_solid": True})
     ws.insert_button("J3", {"macro": "TaoDonMoi", "caption": "+ TẠO ĐƠN MỚI", "width": 230, "height": 40})
     ws.insert_button("J5", {"macro": "CapNhatTongQuan", "caption": "CẬP NHẬT TỔNG QUAN", "width": 230, "height": 32})
@@ -273,23 +304,31 @@ def tong_quan(wb, ws, f, ds):
 
 def bang_gia(ws, f):
     ws.hide_gridlines(2)
-    ws.set_column(0, 0, 30)
-    ws.set_column(1, 1, 18)
-    ws.set_column(2, 2, 46)
+    for i, w in enumerate((30, 18, 34, 44)):
+        ws.set_column(i, i, w)
     ws.set_row(0, 30)
-    for c, t in enumerate(("Model / tên hàng", "Giá chưa VAT", "Ghi chú")):
+    for c, t in enumerate(("Model / tên hàng", "Giá chưa VAT", "Nhóm hàng", "Ghi chú")):
         ws.write(0, c, t, f(bold=True, font_color="white", bg_color=NAVY, align="center"))
+    nhom_truoc, dai = None, 0
     for r in range(1, BG1):
-        nen = "#FFFFFF" if r % 2 else "#F3F8FC"
-        x = BANG_GIA[r - 1] if r - 1 < len(BANG_GIA) else (None, None, None)
-        ws.write(r, 0, x[0], f(bg_color=nen, bold=True)) if x[0] else ws.write_blank(r, 0, None, f(bg_color=nen, bold=True))
-        ws.write(r, 1, x[1], f(bg_color=nen, num_format="#,##0", align="right")) if x[1] else ws.write_blank(r, 1, None, f(bg_color=nen, num_format="#,##0", align="right"))
-        ws.write(r, 2, x[2], f(bg_color=nen, font_color="#C00000", italic=True)) if x[2] else ws.write_blank(r, 2, None, f(bg_color=nen))
+        if r - 1 < len(BANG_GIA):
+            nhom, model, gia, gc = BANG_GIA[r - 1]
+            if nhom != nhom_truoc:
+                dai, nhom_truoc = dai + 1, nhom
+            nen = "#FFFFFF" if dai % 2 else "#EAF1FB"
+            ws.write(r, 0, model, f(bg_color=nen, bold=True))
+            ws.write_number(r, 1, gia, f(bg_color=nen, num_format="#,##0", align="right"))
+            ws.write(r, 2, nhom, f(bg_color=nen, font_color="#1F3864"))
+            ws.write(r, 3, gc, f(bg_color=nen, font_color="#C00000", italic=True)) if gc else ws.write_blank(r, 3, None, f(bg_color=nen))
+        else:
+            for c, nf in ((0, None), (1, "#,##0"), (2, None), (3, None)):
+                ws.write_blank(r, c, None, f(num_format=nf) if nf else f())
     ws.conditional_format(f"A2:A{BG1}", {"type": "duplicate", "format": f(bg_color="#FFC7CE", font_color="#9C0006")})
     ws.freeze_panes(1, 0)
-    ws.autofilter(f"A1:C{BG1}")
-    ws.write("E1", "Cách dùng: gõ thêm model và giá vào dòng trống bên dưới. Các sheet đơn tự lấy giá gợi ý khi gõ đúng model "
-                   "(hoặc tên hàng có chứa model). Model bị trùng sẽ tô đỏ - chỉ giữ một dòng.", f(italic=True, border=0, text_wrap=False))
+    ws.autofilter(f"A1:D{BG1}")
+    ws.write("F1", "Cách dùng: gõ thêm model, giá và nhóm vào dòng trống bên dưới. Các sheet đơn tự lấy giá gợi ý khi gõ đúng model "
+                   "(hoặc tên hàng có chứa model). Model bị trùng sẽ tô đỏ - chỉ giữ một dòng. Muốn xếp lại theo nhóm: bấm mũi tên lọc ở cột "
+                   "Nhóm hàng > Sắp xếp A-Z.", f(italic=True, border=0, text_wrap=False))
 
 
 def huong_dan(ws, f):
@@ -304,8 +343,9 @@ def huong_dan(ws, f):
             ("    STT, Mã kho (KHH), ĐVT (Cái) tự điền; muốn khác thì gõ đè. Thành tiền chưa VAT, gồm VAT, thuế VAT và tổng cộng tự tính.", False),
             ("    Giá: gõ model (hoặc chọn trong danh sách) là đơn giá gợi ý tự hiện theo sheet BangGia; chiết khấu thì gõ đè giá mới.", False),
             ("    Bảng giá: sheet BangGia, gõ thêm model và giá vào dòng trống bên dưới, các đơn tự dùng.", False),
-            ("3. Chọn Giao hàng / Xuất hóa đơn trong ô có danh sách; gõ số hóa đơn, hạn thanh toán. VAT mặc định 8% (ô K5).", False),
-            ("4. Mỗi lần khách trả tiền: ghi một dòng ở bảng 'Các lần khách thanh toán'. Còn nợ tự trừ.", False),
+            ("3. Chọn Giao hàng trong ô có danh sách, gõ hạn thanh toán. VAT mặc định 8% (ô K5).", False),
+            ("4. Hóa đơn: trong sheet đơn, gõ số hóa đơn (và ngày, giá trị) ở bảng 'Hóa đơn đã xuất' là đơn tự chuyển 'Đã xuất'.", False),
+            ("    Mỗi lần khách trả tiền: ghi một dòng ở bảng 'Các lần khách thanh toán' bên phải sheet TongQuan, chọn đúng mã đơn. Còn nợ tự trừ.", False),
             ("5. Bấm 'VỀ TỔNG QUAN' để quay lại; tổng quan tự cập nhật. Nếu tự chép sheet bằng tay thì bấm 'CẬP NHẬT TỔNG QUAN'.", False),
             ("Không sửa, không xóa sheet MAU_DON (mẫu trống để tạo đơn). Xóa đơn: xóa sheet đơn đó rồi bấm 'CẬP NHẬT TỔNG QUAN'.", False),
             ("Màu: cam = đã giao chưa xuất HĐ · đỏ = quá hạn · vàng = thiếu giá / chưa giao · xanh lá = hoàn tất.", False)]
