@@ -11,6 +11,7 @@ Kho riêng tư (private) lưu thông tin công ty và mẫu giấy tờ của C�
 | `dau-chu-ky/` | Ảnh dấu tròn, chữ ký, dấu chức danh (PNG nền trong suốt) và bản ghép. Chỉ trong kho riêng tư |
 | `giay-to-khach-hang/FATA/` | Hợp đồng gốc, phụ lục, đề nghị thanh toán (bản không dấu và có dấu) của FATA |
 | `ho-so/goc/` | Hồ sơ năng lực Trung Kiên 2026 (Word) |
+| `cong-no/CongNo_TrungKien.xlsx` | Bảng công nợ: đơn hàng, mã hàng, giao hàng, xuất hóa đơn, thu tiền, công nợ từng khách |
 | `CLAUDE.md`, `HUONG_DAN_PHIEN_MOI.md`, `requirements.txt` | Hướng dẫn cho phiên làm việc mới |
 | `QUY_TAC.md`, `SO_LOI.md`, `NHAT_KY.md`, `KHOA_VIEC.md` | Quy tắc dự án, sổ lỗi, nhật ký thay đổi, sổ khoá việc |
 
