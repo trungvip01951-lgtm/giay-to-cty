@@ -2,6 +2,7 @@
 """Đóng gói mã VBA (Module1.bas) thành vbaProject.bin bằng bộ xuất VBA của LibreOffice (chuẩn MS-OVBA).
 Chạy: python3 cong-cu/vba/tao_vba_bin.py Module1.bas ra/vbaProject.bin   (cần soffice và python uno)
 Mã VBA chỉ dùng ký tự ASCII (chữ Việt viết bằng ChrW) vì dự án VBA dùng bảng mã 1252."""
+import os
 import pathlib
 import subprocess
 import sys
@@ -10,6 +11,9 @@ import time
 import zipfile
 
 import uno
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from cfb_vba import sua_code_page  # noqa: E402
 from com.sun.star.beans import PropertyValue
 from com.sun.star.script import ModuleInfo
 from com.sun.star.script.ModuleType import NORMAL
@@ -25,8 +29,15 @@ def main(bas, ra):
     code = pathlib.Path(bas).read_text(encoding="ascii")
     with tempfile.TemporaryDirectory() as t:
         port = 2010
+        # bảng mã dự án VBA lấy theo ngôn ngữ hệ thống: đặt en_US để ra code page 1252 (không đặt sẽ ra 0, Excel có thể bỏ macro)
+        env = dict(os.environ, LANG="en_US.CP1252", LC_ALL="en_US.CP1252")
+        if "en_US.cp1252" not in subprocess.run(["locale", "-a"], capture_output=True, text=True).stdout:
+            # máy không có sẵn locale en_US: dựng tạm bằng localedef
+            subprocess.run(["localedef", "-i", "en_US", "-f", "CP1252", f"{t}/loc/en_US.CP1252"], check=True,
+                           capture_output=True) if os.makedirs(f"{t}/loc", exist_ok=True) is None else None
+            env["LOCPATH"] = f"{t}/loc"
         proc = subprocess.Popen(["soffice", "--headless", "--invisible", "--norestore", f"-env:UserInstallation=file://{t}/u",
-                                 f"--accept=socket,host=localhost,port={port};urp;"], stderr=subprocess.DEVNULL)
+                                 f"--accept=socket,host=localhost,port={port};urp;"], stderr=subprocess.DEVNULL, env=env)
         ctx = None
         for _ in range(80):
             try:
@@ -57,7 +68,8 @@ def main(bas, ra):
             pass
         proc.wait(timeout=60)
         with zipfile.ZipFile(out) as z:
-            pathlib.Path(ra).write_bytes(z.read("xl/vbaProject.bin"))
+            data = z.read("xl/vbaProject.bin")
+        pathlib.Path(ra).write_bytes(sua_code_page(data, 1252))   # LibreOffice ghi code page 0; Excel cần 1252
 
 
 if __name__ == "__main__":

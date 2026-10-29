@@ -38,19 +38,34 @@ End Sub
 
 ' Nut "CAP NHAT": ghi lai ten tat ca sheet don hang vao cot Ma don cua TongQuan
 Public Sub CapNhatTongQuan()
-    Dim tq As Worksheet, s As Worksheet, r As Long
+    Dim tq As Worksheet, s As Worksheet, r As Long, ds() As String, n As Long, khac As Boolean
     Set tq = ThisWorkbook.Worksheets("TongQuan")
-    tq.Range("B" & DONG_DAU & ":B" & DONG_CUOI).ClearContents
-    r = DONG_DAU
+    ReDim ds(1 To ThisWorkbook.Worksheets.Count)
     For Each s In ThisWorkbook.Worksheets
         If s.Name <> "TongQuan" And s.Name <> "MAU_DON" And s.Name <> "HuongDan" And s.Name <> "BangGia" Then
-            If r <= DONG_CUOI Then
-                tq.Cells(r, 2).Value = s.Name
-                r = r + 1
-            End If
+            n = n + 1
+            ds(n) = s.Name
         End If
     Next s
-    Application.CalculateFull
+    If n > DONG_CUOI - DONG_DAU + 1 Then
+        MsgBox "Qua " & (DONG_CUOI - DONG_DAU + 1) & " don hang: Tong quan chi hien " & (DONG_CUOI - DONG_DAU + 1) & " don dau. Nen luu file sang ban moi.", vbExclamation
+        n = DONG_CUOI - DONG_DAU + 1
+    End If
+    ' chi ghi lai khi danh sach thay doi (tranh hoi luu file khong can thiet)
+    For r = DONG_DAU To DONG_CUOI
+        If r - DONG_DAU + 1 <= n Then
+            If CStr(tq.Cells(r, 2).Value) <> ds(r - DONG_DAU + 1) Then khac = True
+        ElseIf CStr(tq.Cells(r, 2).Value) <> "" Then
+            khac = True
+        End If
+    Next r
+    If khac Then
+        tq.Range("B" & DONG_DAU & ":B" & DONG_CUOI).ClearContents
+        For r = 1 To n
+            tq.Cells(DONG_DAU + r - 1, 2).Value = ds(r)
+        Next r
+    End If
+    Application.Calculate
 End Sub
 
 ' Nut "VE TONG QUAN" tren moi sheet don
