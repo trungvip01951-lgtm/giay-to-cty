@@ -1,0 +1,23 @@
+{
+  "mau_khach": "giay-to-khach-hang/VLINE/goc/DonDatHang_VLINE_290926_mau_khach.docx",
+  "ra": "giay-to-khach-hang/VLINE/DonDatHang_VLINE_290926_TrungKien.docx",
+  "hang": [
+    {
+      "ten": [
+        "Bơm chìm nước thải PEROTAC – Model: SS-750",
+        "Lưu lượng max: 24 m3/h; Cột áp max: 14 m; Công suất: 0.75 KW / 3 Pha/380V/50Hz",
+        "Xuất xứ: Đài Loan"
+      ],
+      "dvt": "cái",
+      "sl": 2,
+      "don_gia": 3000000
+    }
+  ],
+  "vat_phan_tram": 8,
+  "kiem_tra": {
+    "tong_tien_hang": 6000000,
+    "vat": 480000,
+    "tong": 6480000
+  },
+  "bo_dong_trong": true
+}

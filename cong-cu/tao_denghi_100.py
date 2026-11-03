@@ -27,7 +27,10 @@ def build(don, anh_dau, out_dir):
     m.mixed(d, [("Kính gửi: ", True), (don["khach"], True)])
     m.para(d, f"Địa chỉ: {don['dia_chi']}", after=0)
     m.para(d, f"Mã số thuế: {don['mst']}", after=6)
-    m.para(d, f"Căn cứ Báo giá số {don['bao_gia_so']} ngày {don['bao_gia_ngay']} của {TK['ten']} về việc cung cấp {don['hang']};")
+    if don.get("bao_gia_so"):
+        m.para(d, f"Căn cứ Báo giá số {don['bao_gia_so']} ngày {don['bao_gia_ngay']} của {TK['ten']} về việc cung cấp {don['hang']};")
+    else:
+        m.para(d, f"Căn cứ báo giá của {TK['ten']} đã được hai bên thống nhất về việc cung cấp {don['hang']};")
     m.para(d, f"Căn cứ phương thức thanh toán: {don['thoi_han']},")
     m.para(d, f"chúng tôi kính đề nghị Quý Công ty thanh toán {don['ty_le_thanh_toan']}% giá trị đơn hàng như sau:", after=4)
     m.table(d, ["Nội dung", "Số tiền (đồng)"],
@@ -38,10 +41,10 @@ def build(don, anh_dau, out_dir):
             [11.0, 4.5], size=12, center_cols=(1,))
     m.para(d, f"Bằng chữ: {doc_so(tt)}.", bold=True)
     m.para(d, f"Kính đề nghị Quý Công ty chuyển khoản cho {BANK['chu_tk']}, số tài khoản {BANK['so_tk']} tại {BANK['ten']}; "
-              f"nội dung: Thanh toán {don['ty_le_thanh_toan']}% đơn hàng theo báo giá {don['bao_gia_so']}. Trân trọng cảm ơn Quý Công ty!", after=4)
+              f"nội dung: {don.get('noi_dung_ck') or 'Thanh toán ' + str(don['ty_le_thanh_toan']) + '% đơn hàng theo báo giá ' + don['bao_gia_so']}. Trân trọng cảm ơn Quý Công ty!", after=4)
     m.sign_block(d, "", "BÊN ĐỀ NGHỊ THANH TOÁN", left_note="", right_name=DD["ho_ten"], gap=3)
     out = pathlib.Path(out_dir)
-    p = out / f"DeNghiThanhToan_{don['ty_le_thanh_toan']}pct_{don['bao_gia_so']}{'_CoDau' if anh_dau else ''}.docx"
+    p = out / f"DeNghiThanhToan_{don['ty_le_thanh_toan']}pct_{don.get('bao_gia_so') or don['ma_don']}{'_CoDau' if anh_dau else ''}.docx"
     d.save(p)
     return p, tt
 
