@@ -36,30 +36,35 @@ def thong_so(don):
     vat = tien * don["vat_phan_tram"] // 100
     tong = tien + vat
     k = don["kiem_tra_hoa_don"]
-    assert (tien, vat, tong) == (k["cong_tien_hang"], k["tien_thue"], k["tong"]), "Số tiền không khớp hóa đơn"
+    assert (tien, vat, tong) == (k["cong_tien_hang"], k["tien_thue"], k["tong"]), "Số tiền không khớp hóa đơn / báo giá"
     return tien, vat, tong
 
 
 def ben_mua(d, kh, label, goi):
     m.mixed(d, [(f"{label}: ", True), (kh["ten"], True), (f" ({goi})", False)])
     m.para(d, f"Địa chỉ: {kh['dia_chi']}", after=0)
-    m.para(d, f"Điện thoại kế toán: {kh['ke_toan']}", after=0)
+    g = lambda k, n=25: kh.get(k) or m.dots(n)  # noqa: E731  (thiếu thông tin thì để chấm chấm điền tay)
+    if kh.get("ke_toan"):
+        m.para(d, f"Điện thoại kế toán: {kh['ke_toan']}", after=0)
+    else:
+        m.para(d, f"Điện thoại: {m.dots(25)}" + (f"   Email: {kh['email']}" if kh.get("email") else ""), after=0)
     m.para(d, f"Mã số thuế: {kh['mst']}", after=0)
-    m.para(d, f"Số tài khoản: {kh['stk']} tại {kh['ngan_hang']}", after=0)
-    m.para(d, f"Đại diện: {kh['dai_dien']}          Chức vụ: {kh['chuc_vu']}", after=6)
+    m.para(d, f"Số tài khoản: {g('stk')} tại {g('ngan_hang', 35)}", after=0)
+    m.para(d, f"Đại diện: {g('dai_dien', 30)}          Chức vụ: {g('chuc_vu', 20)}", after=6)
 
 
 def hop_dong(don, anh_dau, out):
-    kh, hd = don["khach"], don["hoa_don"]
+    kh, hd = don["khach"], don.get("hoa_don")
     tien, vat, tong = thong_so(don)
     can_cu, dieu = dieu_khoan_chuan()
     d = m.new_doc()
     m.ANH_DAU = anh_dau
     m.quoc_hieu(d)
-    m.title(d, "HỢP ĐỒNG KINH TẾ", "(Số: " + m.dots(30) + ")")
+    m.title(d, "HỢP ĐỒNG KINH TẾ", "(Số: " + (don.get("so_hd") or m.dots(30)) + ")")
     for c in can_cu:
         m.para(d, "- " + c, italic=True, after=1)
-    m.para(d, f"Hôm nay, ngày ..... tháng ..... năm 2026, chúng tôi đại diện cho các bên ký hợp đồng, gồm có:", after=4)
+    ng = don.get("ngay_hd")
+    m.para(d, f"Hôm nay, ngày {ng[0] if ng else '.....'} tháng {ng[1] if ng else '.....'} năm {ng[2] if ng else 2026}, chúng tôi đại diện cho các bên ký hợp đồng, gồm có:", after=4)
     ben_mua(d, kh, "BÊN MUA", "gọi tắt là bên A")
     m.ben_tk(d, "BÊN BÁN", "gọi tắt là bên B")
     m.para(d, "Điều 1: Nội dung Hợp đồng", bold=True, after=2, keep=True)
@@ -72,14 +77,15 @@ def hop_dong(don, anh_dau, out):
     m.table(d, ["STT", "Nội dung hàng hóa / Model", "ĐVT", "SL", "Đơn giá (VNĐ)", "Thành tiền (VNĐ)"], rows,
             [1.3, 6.3, 1.5, 1.4, 2.7, 2.8], size=12, center_cols=(0, 2, 3, 4, 5))
     m.para(d, f"(Bằng chữ: {doc_so(tong)}./.)", italic=True)
-    m.para(d, f"Hàng hóa đã được bên B xuất Hóa đơn GTGT số {hd['so']}, ký hiệu {hd['ky_hieu']}, ngày {hd['ngay']}.")
+    if hd:
+        m.para(d, f"Hàng hóa đã được bên B xuất Hóa đơn GTGT số {hd['so']}, ký hiệu {hd['ky_hieu']}, ngày {hd['ngay']}.")
     m.para(d, "Điều 2: Phương thức thanh toán", bold=True, after=2, keep=True)
     m.para(d, "Việc thanh toán của Hợp đồng được thực hiện bằng đồng tiền Việt Nam, bằng tiền mặt hoặc chuyển khoản. "
               "Bên A thanh toán cho bên B 100% giá trị hợp đồng trước khi nhận hàng hoặc ngay khi nhận hàng.")
     for x in dieu:
         if re.match(r"^Điều \d+:", x):
             m.para(d, x, bold=True, after=2, keep=True)
-        elif x.startswith("Địa chỉ giao nhận chứng từ"):
+        elif x.startswith("Địa chỉ giao nhận chứng từ") and kh.get("nhan_ho_so"):
             m.para(d, f"Địa chỉ giao nhận chứng từ: {kh['nhan_ho_so']}; hóa đơn điện tử gửi về {kh['email_hoa_don']}.")
         elif x.startswith("Địa điểm giao hàng"):
             m.para(d, "3.2. " + x, after=3)
@@ -87,7 +93,8 @@ def hop_dong(don, anh_dau, out):
             m.para(d, x, after=3)
     m.sign_block(d, "ĐẠI DIỆN BÊN MUA", "ĐẠI DIỆN BÊN BÁN", left_note="(Ký, ghi rõ họ tên, đóng dấu)",
                  right_note="(Ký, ghi rõ họ tên, đóng dấu)", right_name=DD["ho_ten"])
-    p = out / f"HopDong_HD{hd['so']}_TienDai{'_CoDau' if anh_dau else ''}.docx"
+    ten = don.get("ten_tep") or f"HopDong_HD{hd['so']}_TienDai"
+    p = out / f"{ten}{'_CoDau' if anh_dau else ''}.docx"
     d.save(p)
     return p
 
@@ -139,4 +146,5 @@ if __name__ == "__main__":
     don = json.load(open(f, encoding="utf-8"))
     for anh in (None, *sys.argv[2:3]):
         print(hop_dong(don, anh, f.parent))
-    print(giao_nhan(don, None, f.parent))
+    if don.get("hoa_don"):
+        print(giao_nhan(don, None, f.parent))
