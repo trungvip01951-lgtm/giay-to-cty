@@ -1,11 +1,35 @@
 {
-  "khach": {"ten": "CÔNG TY CỔ PHẦN ĐẦU TƯ XÂY DỰNG SAO ĐỎ", "dia_chi": "Số 768B Ngô Gia Tự, Phường Hải An, TP Hải Phòng, Việt Nam",
-            "mst": "0200657272", "email": "doi1saodo@gmail.com"},
+  "khach": {
+    "ten": "CÔNG TY CỔ PHẦN ĐẦU TƯ XÂY DỰNG SAO ĐỎ",
+    "dia_chi": "Số 768B Ngô Gia Tự, Phường Hải An, TP Hải Phòng, Việt Nam",
+    "mst": "0200657272",
+    "email": "doi1saodo@gmail.com",
+    "dien_thoai": "0904349089",
+    "stk": "1106 1924 8668",
+    "ngan_hang": "Ngân hàng Vietinbank – CN Ngô Quyền",
+    "dai_dien": "Ông Phạm Anh Tuấn",
+    "chuc_vu": "Giám đốc",
+    "lien_he": "Ông Nguyễn Minh Thắng – Đội trưởng"
+  },
   "so_hd": "0311/2026/HĐMB/TK/SĐ",
-  "ngay_hd": [3, 11, 2026],
+  "ngay_hd": [
+    3,
+    11,
+    2026
+  ],
   "ten_tep": "HopDong_0311-2026_SaoDo_REDPUMP_2RP25-160-2.2",
-  "hang": [{"ten": "Máy bơm nước, hiệu REDPUMP, Model: 2RP25/160/2.2; Lưu lượng: 10 m³/h; Cột áp: 65 m; Công suất: 2.2 kW / 1 Pha/220V/50Hz; Xuất xứ: China",
-            "dvt": "cái", "sl": 1, "don_gia": 5500000}],
+  "hang": [
+    {
+      "ten": "Máy bơm nước, hiệu REDPUMP, Model: 2RP25/160/2.2; Lưu lượng: 10 m³/h; Cột áp: 65 m; Công suất: 2.2 kW / 1 Pha/220V/50Hz; Xuất xứ: China",
+      "dvt": "cái",
+      "sl": 1,
+      "don_gia": 5500000
+    }
+  ],
   "vat_phan_tram": 8,
-  "kiem_tra_hoa_don": {"cong_tien_hang": 5500000, "tien_thue": 440000, "tong": 5940000}
+  "kiem_tra_hoa_don": {
+    "cong_tien_hang": 5500000,
+    "tien_thue": 440000,
+    "tong": 5940000
+  }
 }

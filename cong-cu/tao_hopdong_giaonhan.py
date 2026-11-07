@@ -47,10 +47,12 @@ def ben_mua(d, kh, label, goi):
     if kh.get("ke_toan"):
         m.para(d, f"Điện thoại kế toán: {kh['ke_toan']}", after=0)
     else:
-        m.para(d, f"Điện thoại: {m.dots(25)}" + (f"   Email: {kh['email']}" if kh.get("email") else ""), after=0)
+        m.para(d, f"Điện thoại: {g('dien_thoai')}" + (f"   Email: {kh['email']}" if kh.get("email") else ""), after=0)
     m.para(d, f"Mã số thuế: {kh['mst']}", after=0)
     m.para(d, f"Số tài khoản: {g('stk')} tại {g('ngan_hang', 35)}", after=0)
-    m.para(d, f"Đại diện: {g('dai_dien', 30)}          Chức vụ: {g('chuc_vu', 20)}", after=6)
+    m.para(d, f"Đại diện: {g('dai_dien', 30)}          Chức vụ: {g('chuc_vu', 20)}", after=0 if kh.get("lien_he") else 6)
+    if kh.get("lien_he"):
+        m.para(d, f"Liên hệ trực tiếp: {kh['lien_he']}", after=6)
 
 
 def hop_dong(don, anh_dau, out):
@@ -92,7 +94,8 @@ def hop_dong(don, anh_dau, out):
         else:
             m.para(d, x, after=3)
     m.sign_block(d, "ĐẠI DIỆN BÊN MUA", "ĐẠI DIỆN BÊN BÁN", left_note="(Ký, ghi rõ họ tên, đóng dấu)",
-                 right_note="(Ký, ghi rõ họ tên, đóng dấu)", right_name=DD["ho_ten"])
+                 right_note="(Ký, ghi rõ họ tên, đóng dấu)", right_name=DD["ho_ten"],
+                 left_name=re.sub(r"^(Ông|Bà)\s+", "", kh.get("dai_dien") or ""))
     ten = don.get("ten_tep") or f"HopDong_HD{hd['so']}_TienDai"
     p = out / f"{ten}{'_CoDau' if anh_dau else ''}.docx"
     d.save(p)
