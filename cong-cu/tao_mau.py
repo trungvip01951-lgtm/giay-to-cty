@@ -178,6 +178,9 @@ def ben_kh(d, label, goi, extra_tk=True):
 def sign_block(d, left, right, left_note="(Ký, ghi rõ họ tên và đóng dấu)", right_note=None,
                left_name="", right_name="", gap=4):
     right_note = right_note or left_note
+    if not ANH_DAU:
+        # bản Word để in, ký tay: không in sẵn tên người đại diện hai bên (anh Trung chốt 09/11/2026)
+        left_name = right_name = ""
     if d.paragraphs:
         d.paragraphs[-1].paragraph_format.keep_with_next = True
     t = d.add_table(rows=1, cols=2)
@@ -396,8 +399,7 @@ def gioi_thieu():
         run(q, "(Ký, ghi rõ họ tên và đóng dấu)", italic=True, size=12)
         for _ in range(4):
             r.add_paragraph()
-        q = r.add_paragraph(); q.alignment = C
-        run(q, DD["ho_ten"], bold=True)
+        # bản in ký tay: không in sẵn tên Giám đốc (anh Trung chốt 09/11/2026)
     return save(d, "GiayGioiThieu_TrungKien.docx")
 
 

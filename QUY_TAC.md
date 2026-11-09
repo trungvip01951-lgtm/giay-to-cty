@@ -15,3 +15,4 @@
 - Hợp đồng/phụ lục PDF: chèn dấu giáp lai (dấu tròn 40 mm chia đều thành từng lát, mỗi trang một lát sát mép phải, giữa trang) và dấu + chữ ký ở khối "ĐẠI DIỆN BÊN BÁN" trang cuối: python3 cong-cu/chen_dau_pdf.py. Không sửa nội dung hợp đồng của khách. (27/10/2026)
 - Mọi bản có chèn dấu (đề nghị thanh toán, hợp đồng, phụ lục...) làm thêm bản "Scan" trông như mới quét: nền giấy hơi ngả, mờ nhẹ, lệch trang rất nhẹ: python3 cong-cu/lam_ban_scan.py vao_CoDau.pdf ra_Scan.pdf. Gửi anh bản Scan cùng bản có dấu. (anh Trung chốt 28/10/2026)
 - File công nợ khách (cong-no/*.xlsm): làm trên Excel máy tính; gửi khách theo dõi bằng PDF trang Tổng quan, không đưa file lên Google Trang tính (anh Trung chốt 29/10/2026).
+- Bản Word để IN (ký, đóng dấu tay): không in sẵn tên người đại diện dưới khối ký của cả hai bên (bên mua và bên bán), áp dụng cho hợp đồng, đề nghị thanh toán và mọi mẫu. Bản có chèn dấu điện tử thì giữ như cũ. (anh Trung chốt 09/11/2026)
