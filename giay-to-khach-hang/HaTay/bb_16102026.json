@@ -1,0 +1,15 @@
+{
+  "khach": {"ten": "CÔNG TY TNHH MÔI TRƯỜNG VÀ XÂY DỰNG HÀ TÂY", "dia_chi": "Số 9, ngõ 57, phố Vĩnh Tuy, phường Vĩnh Tuy, thành phố Hà Nội, Việt Nam",
+            "mst": "0111541621"},
+  "chi_bb": true, "lam_bb": true,
+  "tieu_de_bb": "BIÊN BẢN BÀN GIAO",
+  "so_hd": "16102026.HĐKT.TK.HT", "ngay_hd_chu": "16 tháng 10 năm 2026",
+  "bao_hanh": "24 tháng đối với hàng AQUARIS, 12 tháng đối với hàng còn lại",
+  "ten_tep_bb": "BienBanBanGiao_16102026.HDKT.TK.HT_HaTay",
+  "hang": [
+    {"ten": "Bơm định lượng AQUARIS – Model: JLM-45 (lưu lượng max 30 L/h, cột áp max 3 Bar, 45 W / 1 pha 220V, xuất xứ Italy)", "dvt": "cái", "sl": 1, "don_gia": 4500000},
+    {"ten": "Bơm chìm nước thải REDPUMP – Model: SSM-450F (1 pha) (lưu lượng max 18 m3/h, cột áp max 12 m, 0.45 kW / 1 pha 220V, xuất xứ Trung Quốc)", "dvt": "cái", "sl": 1, "don_gia": 2000000}
+  ],
+  "vat_phan_tram": 8,
+  "kiem_tra_hoa_don": {"cong_tien_hang": 6500000, "tien_thue": 520000, "tong": 7020000}
+}

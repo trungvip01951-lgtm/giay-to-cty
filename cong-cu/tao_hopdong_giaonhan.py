@@ -103,7 +103,7 @@ def hop_dong(don, anh_dau, out):
 
 
 def giao_nhan(don, anh_dau, out):
-    kh, hd = don["khach"], don["hoa_don"]
+    kh, hd = don["khach"], don.get("hoa_don")
     d = m.new_doc()
     m.ANH_DAU = None          # biên bản do nhân viên ký, không dùng dấu chữ ký Giám đốc
     t = d.add_table(rows=1, cols=2)
@@ -121,9 +121,11 @@ def giao_nhan(don, anh_dau, out):
         m.run(q, s, bold=bd, italic=not bd, size=12)
     m.fix_layout(t, [7.6, 8.4])
     m.para(d, "", after=4)
-    m.title(d, "BIÊN BẢN GIAO NHẬN HÀNG HÓA")
-    m.para(d, f"Căn cứ Hợp đồng kinh tế số {m.dots(20)} ngày ..... tháng ..... năm 2026 và Hóa đơn GTGT số {hd['so']}, "
-              f"ký hiệu {hd['ky_hieu']}, ngày {hd['ngay']}.", italic=True, after=4)
+    m.title(d, don.get("tieu_de_bb", "BIÊN BẢN GIAO NHẬN HÀNG HÓA"))
+    can_cu = f"Căn cứ Hợp đồng kinh tế số {don.get('so_hd') or m.dots(20)} ngày {don.get('ngay_hd_chu') or '..... tháng ..... năm 2026'}"
+    if hd:
+        can_cu += f" và Hóa đơn GTGT số {hd['so']}, ký hiệu {hd['ky_hieu']}, ngày {hd['ngay']}"
+    m.para(d, can_cu + ".", italic=True, after=4)
     m.mixed(d, [("Bên giao: ", True), (TK["ten"], True)])
     m.para(d, f"Địa chỉ: {TK['dia_chi']}", after=0)
     m.para(d, f"Người đại diện: {m.dots(30)}   Chức vụ: {m.dots(20)}", after=5)
@@ -134,12 +136,12 @@ def giao_nhan(don, anh_dau, out):
     rows = [[str(i), x["ten"], x["dvt"], str(x["sl"])] for i, x in enumerate(don["hang"], 1)]
     m.table(d, ["STT", "Tên hàng hóa / Model", "ĐVT", "Số lượng"], rows, [1.4, 9.2, 2.2, 3.0], size=12, center_cols=(0, 2, 3))
     m.para(d, "Chất lượng: Hàng mới 100%, nguyên đai kiện, đủ số lượng như trên.", after=1)
-    m.para(d, "Bảo hành: 12 tháng kể từ ngày ký biên bản này, theo điều kiện của Hợp đồng.", after=1)
+    m.para(d, f"Bảo hành: {don.get('bao_hanh', '12 tháng')} kể từ ngày ký biên bản này, theo điều kiện của Hợp đồng.", after=1)
     m.para(d, f"Địa điểm giao nhận: {m.dots(60)}", after=3)
     m.para(d, "Hai bên đã kiểm tra, xác nhận bàn giao đúng số lượng, chủng loại như trên. Biên bản được lập thành 02 bản, mỗi bên giữ 01 bản.", after=8)
     m.sign_block(d, "ĐẠI DIỆN BÊN GIAO", "ĐẠI DIỆN BÊN NHẬN", left_note="(Ký, ghi rõ họ tên)", right_note="(Ký, ghi rõ họ tên)",
                  left_name="Hà Thu Thảo")
-    p = out / f"BienBanGiaoNhan_HD{hd['so']}_TienDai.docx"
+    p = out / ((don.get("ten_tep_bb") or f"BienBanGiaoNhan_HD{hd['so']}_TienDai") + ".docx")
     d.save(p)
     return p
 
@@ -148,6 +150,7 @@ if __name__ == "__main__":
     f = pathlib.Path(sys.argv[1])
     don = json.load(open(f, encoding="utf-8"))
     for anh in (None, *sys.argv[2:3]):
-        print(hop_dong(don, anh, f.parent))
-    if don.get("hoa_don"):
+        if not don.get("chi_bb"):                    # chi_bb: hợp đồng đã có sẵn, chỉ làm biên bản
+            print(hop_dong(don, anh, f.parent))
+    if don.get("hoa_don") or don.get("lam_bb"):
         print(giao_nhan(don, None, f.parent))

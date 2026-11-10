@@ -27,7 +27,9 @@ def build(don, anh_dau, out_dir):
     m.mixed(d, [("Kính gửi: ", True), (don["khach"], True)])
     m.para(d, f"Địa chỉ: {don['dia_chi']}", after=0)
     m.para(d, f"Mã số thuế: {don['mst']}", after=6)
-    if don.get("bao_gia_so"):
+    if don.get("hop_dong_so"):
+        m.para(d, f"Căn cứ Hợp đồng kinh tế số {don['hop_dong_so']} ký ngày {don['hop_dong_ngay']} giữa hai bên về việc cung cấp {don['hang']};")
+    elif don.get("bao_gia_so"):
         m.para(d, f"Căn cứ Báo giá số {don['bao_gia_so']} ngày {don['bao_gia_ngay']} của {TK['ten']} về việc cung cấp {don['hang']};")
     else:
         m.para(d, f"Căn cứ báo giá của {TK['ten']} đã được hai bên thống nhất về việc cung cấp {don['hang']};")
@@ -42,7 +44,7 @@ def build(don, anh_dau, out_dir):
     m.para(d, f"Bằng chữ: {doc_so(tt)}.", bold=True)
     m.para(d, f"Kính đề nghị Quý Công ty chuyển khoản cho {BANK['chu_tk']}, số tài khoản {BANK['so_tk']} tại {BANK['ten']}; "
               f"nội dung: {don.get('noi_dung_ck') or 'Thanh toán ' + str(don['ty_le_thanh_toan']) + '% đơn hàng theo báo giá ' + don['bao_gia_so']}. Trân trọng cảm ơn Quý Công ty!", after=4)
-    m.sign_block(d, "", "BÊN ĐỀ NGHỊ THANH TOÁN", left_note="", right_name=DD["ho_ten"], gap=3)
+    m.sign_block(d, "", "BÊN ĐỀ NGHỊ THANH TOÁN", left_note="", right_note="(Ký, ghi rõ họ tên và đóng dấu)", right_name=DD["ho_ten"], gap=3)
     out = pathlib.Path(out_dir)
     p = out / f"DeNghiThanhToan_{don['ty_le_thanh_toan']}pct_{don.get('bao_gia_so') or don['ma_don']}{'_CoDau' if anh_dau else ''}.docx"
     d.save(p)

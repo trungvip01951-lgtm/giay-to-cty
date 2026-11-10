@@ -92,7 +92,7 @@ def build(anh_dau=None, out_dir=None):
     m.para(d, f"Bằng chữ: {doc_so(CON_LAI)}.", bold=True)
     m.para(d, f"Thời hạn thanh toán: theo Điều 2 của Hợp đồng và Phụ lục hợp đồng. Kính đề nghị Quý Công ty chuyển khoản cho {BANK['chu_tk']}, số tài khoản {BANK['so_tk']} tại {BANK['ten']}; nội dung: Thanh toán phần còn lại hợp đồng {HD_SO}. Trân trọng cảm ơn Quý Công ty!", after=4)
     m.ANH_DAU = anh_dau
-    m.sign_block(d, "", "BÊN ĐỀ NGHỊ THANH TOÁN", left_note="", right_name=DD["ho_ten"], gap=3)
+    m.sign_block(d, "", "BÊN ĐỀ NGHỊ THANH TOÁN", left_note="", right_note="(Ký, ghi rõ họ tên và đóng dấu)", right_name=DD["ho_ten"], gap=3)
     o = pathlib.Path(out_dir) if out_dir else OUT
     o.mkdir(parents=True, exist_ok=True)
     p = o / (f"DeNghiThanhToan_ConLai_{HD_SO}" + ("_CoDau" if anh_dau else "") + ".docx")
