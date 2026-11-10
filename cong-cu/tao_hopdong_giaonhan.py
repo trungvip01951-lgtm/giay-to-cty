@@ -89,12 +89,22 @@ def hop_dong(don, anh_dau, out):
         m.para(d, f"Lần 1: Thanh toán 50% giá trị hợp đồng sau khi hợp đồng được ký kết, số tiền {so(nua)}đ ({doc_so(nua)}).")
         m.para(d, f"Lần 2: Thanh toán 50% giá trị còn lại của hợp đồng {so(tong - nua)}đ ({doc_so(tong - nua)}) trong vòng 15 ngày "
                   "kể từ ngày nhận đủ hàng và nhận đầy đủ hồ sơ thanh toán (Hóa đơn GTGT, CO – CQ).")
+    elif don.get("thanh_toan") == "coc":        # đặt cọc X% khi ký, phần còn lại khi nhận đủ hàng và giấy tờ
+        pc = don["coc_phan_tram"]
+        coc = tong * pc // 100
+        assert tong * pc % 100 == 0
+        m.para(d, "Việc thanh toán của Hợp đồng được thực hiện bằng đồng tiền Việt Nam, theo hình thức chuyển khoản.")
+        m.para(d, f"Lần 1: Bên A đặt cọc {pc}% giá trị hợp đồng ngay khi ký hợp đồng, số tiền {so(coc)}đ ({doc_so(coc)}).")
+        m.para(d, f"Lần 2: Bên A thanh toán {100 - pc}% giá trị còn lại của hợp đồng, số tiền {so(tong - coc)}đ ({doc_so(tong - coc)}), "
+                  "khi nhận đủ hàng hóa và các giấy tờ liên quan (Hóa đơn GTGT, Biên bản bàn giao, CO – CQ).")
     else:
         m.para(d, "Việc thanh toán của Hợp đồng được thực hiện bằng đồng tiền Việt Nam, bằng tiền mặt hoặc chuyển khoản. "
                   "Bên A thanh toán cho bên B 100% giá trị hợp đồng trước khi nhận hàng hoặc ngay khi nhận hàng.")
     for x in dieu:
         if don.get("thanh_toan") == "50_50" and x.startswith("3.1. Thời gian giao hàng"):
             x = "3.1. Thời gian giao hàng: Trong vòng 1 ngày kể từ ngày nhận được thanh toán lần 1."
+        if don.get("thanh_toan") == "coc" and x.startswith("3.1. Thời gian giao hàng"):
+            x = "3.1. Thời gian giao hàng: Trong vòng 1 ngày kể từ ngày nhận được tiền đặt cọc của bên mua."
         if re.match(r"^Điều \d+:", x):
             m.para(d, x, bold=True, after=2, keep=True)
         elif x.startswith("Địa chỉ giao nhận chứng từ") and kh.get("nhan_ho_so"):
