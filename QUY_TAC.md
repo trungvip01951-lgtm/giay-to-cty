@@ -1,7 +1,7 @@
 # Quy tắc dự án giấy tờ Trung Kiên
 (Chốt trong hồ sơ ngày 23/10/2026; mục 2 của ho-so/HoSo_...md là bản đầy đủ.)
 - Chỉ làm giấy tờ của Trung Kiên. Thịnh Vượng/chị Thảo: khi anh Trung bảo làm mới làm (ghi nguyên văn 23/10/2026: "làm của trung thôi ko làm thảo khi nào a bảo làm cho thảo mới thay thông tin thảo").
-- Bên bán ký: GIÁM ĐỐC – Nguyễn Việt Trung. Phiếu xuất kho/bàn giao/bảo hành: Hà Thu Thảo.
+- Bên bán ký: GIÁM ĐỐC – Nguyễn Việt Trung. Biên bản bàn giao và phiếu bảo hành: dưới "Đại diện bên giao"/"Đại diện bên bán" in tên **Nguyễn Trung** (kể cả bản Word để in; anh Trung chốt 10/11/2026, thay quy tắc cũ ghi Hà Thu Thảo). Phiếu xuất kho: theo mẫu đang dùng.
 - Chỗ ký, đóng dấu để trống (ký tay). Font Times New Roman 12, A4.
 - Ngân hàng ghi một cách: "Ngân hàng TMCP Ngoại thương Việt Nam (Vietcombank) – CN Hà Nội – PGD số 2".
 - Toà án ghi "Tòa án nhân dân có thẩm quyền tại TP Hà Nội". Căn cứ luật ghi "Bộ luật Dân sự số 91/2015/QH13".

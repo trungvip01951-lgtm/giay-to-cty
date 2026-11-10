@@ -140,7 +140,7 @@ def giao_nhan(don, anh_dau, out):
     m.para(d, f"Địa điểm giao nhận: {m.dots(60)}", after=3)
     m.para(d, "Hai bên đã kiểm tra, xác nhận bàn giao đúng số lượng, chủng loại như trên. Biên bản được lập thành 02 bản, mỗi bên giữ 01 bản.", after=8)
     m.sign_block(d, "ĐẠI DIỆN BÊN GIAO", "ĐẠI DIỆN BÊN NHẬN", left_note="(Ký, ghi rõ họ tên)", right_note="(Ký, ghi rõ họ tên)",
-                 left_name="Hà Thu Thảo")
+                 left_name="Nguyễn Trung", giu_ten=True)   # bên giao ký tên Nguyễn Trung (anh Trung chốt 10/11/2026)
     p = out / ((don.get("ten_tep_bb") or f"BienBanGiaoNhan_HD{hd['so']}_TienDai") + ".docx")
     d.save(p)
     return p

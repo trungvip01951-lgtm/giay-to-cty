@@ -176,9 +176,9 @@ def ben_kh(d, label, goi, extra_tk=True):
 
 
 def sign_block(d, left, right, left_note="(Ký, ghi rõ họ tên và đóng dấu)", right_note=None,
-               left_name="", right_name="", gap=4):
+               left_name="", right_name="", gap=4, giu_ten=False):
     right_note = right_note or left_note
-    if not ANH_DAU:
+    if not ANH_DAU and not giu_ten:
         # bản Word để in, ký tay: không in sẵn tên người đại diện hai bên (anh Trung chốt 09/11/2026)
         left_name = right_name = ""
     if d.paragraphs:
