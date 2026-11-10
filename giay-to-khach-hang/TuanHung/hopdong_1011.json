@@ -1,0 +1,14 @@
+{
+  "khach": {"ten": "CÔNG TY TNHH CƠ ĐIỆN TUẤN HƯNG", "dia_chi": "Số nhà B89, Phố chợ, Xã Nội Bài, Thành phố Hà Nội, Việt Nam", "mst": "0108379827"},
+  "so_hd": "1011/2026/HĐMB/TK/TH",
+  "ngay_hd": [10, 11, 2026],
+  "ten_tep": "HopDong_1011-2026_TuanHung",
+  "thanh_toan": "50_50",
+  "hang": [
+    {"ten": "Bơm chìm nước thải\nHiệu PEROTAC\nModel: 80WC45-20-5.5\nLưu lượng max: 90 m3/h\nCột áp max: 32 m\nCông suất: 5.5 KW / 3 Pha/380V/50Hz\nXuất xứ: Đài Loan\nBuồng thân gang, cánh hợp kim inox chịu mài mòn", "dvt": "cái", "sl": 6, "don_gia": 10000000},
+    {"ten": "Máy bơm trục rời đầu Inox\nHiệu REDPUMP\nModel: RPX80-100-160/15\nLưu lượng: 110 m³/h\nCột áp: 32 m\nCông suất: 15 kW / 3 Pha/380V\nXuất xứ: Trung Quốc\nVật liệu: Buồng cánh Inox đúc\nChức năng: bơm bột giấy, nước thải chứa rác, cánh hở", "dvt": "cái", "sl": 9, "don_gia": 58000000},
+    {"ten": "Máy bơm trục rời đầu Inox\nHiệu REDPUMP\nModel: RPX65-80-160/15\nLưu lượng: 60 m³/h\nCột áp: 15 m\nCông suất: 7.5 kW / 3 Pha/380V\nXuất xứ: Trung Quốc\nVật liệu: Buồng cánh Inox đúc\nChức năng: bơm bột giấy, nước thải chứa rác, cánh hở", "dvt": "cái", "sl": 1, "don_gia": 41000000}
+  ],
+  "vat_phan_tram": 8,
+  "kiem_tra_hoa_don": {"cong_tien_hang": 623000000, "tien_thue": 49840000, "tong": 672840000}
+}
