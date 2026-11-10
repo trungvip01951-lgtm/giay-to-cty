@@ -1,9 +1,19 @@
 {
-  "khach": {"ten": "CÔNG TY TNHH MÔI TRƯỜNG VÀ XÂY DỰNG ĐÔNG HẢI", "dai_dien": "Nguyễn Thị Thúy Quỳnh", "chuc_vu": "Giám đốc",
-            "dia_chi": "29A ngõ 282 đường Hà Huy Tập, xã Phù Đổng, TP Hà Nội, Việt Nam", "dien_thoai": "",
-            "mst": "0110723957", "tai_khoan": "111622484444 tại Ngân hàng Vietinbank, chi nhánh Đông Hà Nội"},
+  "khach": {
+    "ten": "CÔNG TY TNHH MÔI TRƯỜNG VÀ XÂY DỰNG ĐÔNG HẢI",
+    "dai_dien": "Bà Nguyễn Thị Thúy Quỳnh",
+    "chuc_vu": "Giám đốc",
+    "dia_chi": "29A ngõ 282 đường Hà Huy Tập, xã Phù Đổng, TP Hà Nội, Việt Nam",
+    "dien_thoai": "",
+    "mst": "0110723957",
+    "tai_khoan": "111622484444 tại Ngân hàng Vietinbank, chi nhánh Đông Hà Nội"
+  },
   "so_hd": "10.11.2026/ĐH-HĐ",
-  "ngay_hd": [10, 11, 2026],
+  "ngay_hd": [
+    10,
+    11,
+    2026
+  ],
   "hieu_luc_den": "31/12/2027",
   "ten_tep": "HopDongNguyenTac_10.11.2026_DongHai"
 }
