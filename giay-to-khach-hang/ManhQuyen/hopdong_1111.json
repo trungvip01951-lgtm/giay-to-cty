@@ -1,0 +1,17 @@
+{
+  "ben_ban": "thinh_vuong",
+  "khach": {"ten": "CÔNG TY CỔ PHẦN THƯƠNG MẠI MẠNH QUYÊN", "dia_chi": "Lô CN5, KCN Sông Công 2, phường Bách Quang, tỉnh Thái Nguyên",
+            "dien_thoai": "0983 629 854", "email": "cncthainguyen68@gmail.com", "mst": "4601613142",
+            "stk": "8699889999", "ngan_hang": "Ngân hàng TMCP Đầu tư và Phát triển Việt Nam – chi nhánh Thái Nguyên",
+            "dai_dien": "Ông Hoàng Văn Tú", "chuc_vu": "Giám đốc"},
+  "so_hd": "1111/2026/HĐMB/TV/MQ",
+  "ngay_hd": [11, 11, 2026],
+  "ten_tep": "HopDong_1111-2026_ThinhVuong_ManhQuyen",
+  "ghi_chu_gia": "Giá trên đã bao gồm phí vận chuyển. Hàng mới 100%, bảo hành 12 tháng theo điều kiện của hãng.",
+  "hang": [
+    {"ten": "Bơm ly tâm Inox đúc - Cánh hở\nCông suất: 3Kw/380v/50Hz\nLưu lượng max: 38 m3/h\nÁp lực: 30 mét\nVật liệu: SS316 Đúc (thân cánh)\nCánh hở: bơm được chất có cặn nhỏ\nIn/Out: DN 50-40\nMechanical Seal: Sic/Sic/Fkm\nXuất xứ: China", "dvt": "cái", "sl": 1, "don_gia": 16800000},
+    {"ten": "Bơm đặt cạn Redpump\nModel: JEXM 150\nĐiện áp: 1P/220V-50HZ\nCông suất: 1.0kw (1.5hp)\nCột áp: 14 – 51m\nLưu lượng: 4.8 – 1 m3/h\nHọng hút xả: 25 – 25mm\nNhiệt độ chất lỏng: 45°C\nCó giấy chứng nhận nhập khẩu CO-CQ\nXuất xứ: made in china\nBảo hành: 12 tháng", "dvt": "cái", "sl": 1, "don_gia": 2700000}
+  ],
+  "vat_phan_tram": 8,
+  "kiem_tra_hoa_don": {"cong_tien_hang": 19500000, "tien_thue": 1560000, "tong": 21060000}
+}

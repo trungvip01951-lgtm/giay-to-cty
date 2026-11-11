@@ -55,7 +55,17 @@ def ben_mua(d, kh, label, goi):
         m.para(d, f"Liên hệ trực tiếp: {kh['lien_he']}", after=6)
 
 
+def dung_ben_ban(don):
+    """Bên bán mặc định Trung Kiên; don['ben_ban'] = 'thinh_vuong' thì dùng du-lieu/cong_ty_thinh_vuong.json."""
+    global TK, DD, BANK
+    f = m.ROOT / "du-lieu" / ("cong_ty_thinh_vuong.json" if don.get("ben_ban") == "thinh_vuong" else "cong_ty_trung_kien.json")
+    ct = json.load(open(f, encoding="utf-8"))["cong_ty"]
+    TK, DD, BANK = ct, ct["dai_dien"], ct["ngan_hang"]
+    m.TK, m.DD, m.BANK = TK, DD, BANK
+
+
 def hop_dong(don, anh_dau, out):
+    dung_ben_ban(don)
     kh, hd = don["khach"], don.get("hoa_don")
     tien, vat, tong = thong_so(don)
     can_cu, dieu = dieu_khoan_chuan()
@@ -79,6 +89,8 @@ def hop_dong(don, anh_dau, out):
     m.table(d, ["STT", "Nội dung hàng hóa / Model", "ĐVT", "SL", "Đơn giá (VNĐ)", "Thành tiền (VNĐ)"], rows,
             [1.3, 6.3, 1.5, 1.4, 2.7, 2.8], size=12, center_cols=(0, 2, 3, 4, 5))
     m.para(d, f"(Bằng chữ: {doc_so(tong)}./.)", italic=True)
+    if don.get("ghi_chu_gia"):
+        m.para(d, don["ghi_chu_gia"])
     if hd:
         m.para(d, f"Hàng hóa đã được bên B xuất Hóa đơn GTGT số {hd['so']}, ký hiệu {hd['ky_hieu']}, ngày {hd['ngay']}.")
     m.para(d, "Điều 2: Phương thức thanh toán", bold=True, after=2, keep=True)
