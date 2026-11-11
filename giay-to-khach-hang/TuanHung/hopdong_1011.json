@@ -17,7 +17,7 @@
       "ten": "Bơm chìm nước thải\nHiệu PEROTAC\nModel: 80WC45-20-5.5\nLưu lượng max: 90 m3/h\nCột áp max: 32 m\nCông suất: 5.5 KW / 3 Pha/380V/50Hz\nXuất xứ: Đài Loan\nBuồng thân gang, cánh hợp kim inox chịu mài mòn",
       "dvt": "cái",
       "sl": 6,
-      "don_gia": 10000000
+      "don_gia": 10500000
     },
     {
       "ten": "Máy bơm trục rời đầu Inox\nHiệu REDPUMP\nModel: RPX80-100-160/15\nLưu lượng: 110 m³/h\nCột áp: 32 m\nCông suất: 15 kW / 3 Pha/380V\nXuất xứ: Trung Quốc\nVật liệu: Buồng cánh Inox đúc\nChức năng: bơm bột giấy, nước thải chứa rác, cánh hở",
@@ -34,9 +34,9 @@
   ],
   "vat_phan_tram": 8,
   "kiem_tra_hoa_don": {
-    "cong_tien_hang": 647600000,
-    "tien_thue": 51808000,
-    "tong": 699408000
+    "cong_tien_hang": 650600000,
+    "tien_thue": 52048000,
+    "tong": 702648000
   },
   "coc_phan_tram": 30
 }
