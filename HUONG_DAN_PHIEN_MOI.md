@@ -13,6 +13,7 @@
 | Hợp đồng do mình soạn (mẫu chuẩn 3.5) có dấu + giáp lai + scan | JSON như giay-to-khach-hang/SaoDo/hopdong_2RP25-160-2.2.json (thiếu thông tin bên A thì bỏ trống, tự ra chấm chấm). `python3 cong-cu/tao_hopdong_giaonhan.py don.json dau-chu-ky/dau_chu_ky_moi_ghep.png` → đổi _CoDau.docx sang PDF → `chen_dau_pdf.py ... 40 "-"` (chỉ giáp lai) → `lam_ban_scan.py` |
 | Đơn đặt hàng theo mẫu của khách | `python3 cong-cu/dien_don_dat_hang_khach.py don.json` (mẫu: giay-to-khach-hang/VLINE/don_290926.json), đổi PDF, `chen_dau_pdf.py ... 40 "ĐẠI DIỆN BÊN B"`, rồi scan |
 | Ký đóng dấu PDF đã in sẵn tên Giám đốc (bộ phiếu xuất kho/bảo hành/bàn giao từ phần mềm báo giá) | `python3 cong-cu/ky_dong_dau_tren_ten.py vao.pdf ra_CoDau.pdf dau-chu-ky/dau_tron_chu_ky_khong_ten.png` rồi `lam_ban_scan.py`. Không giáp lai nếu là các phiếu riêng |
+| Bộ 3 phiếu (xuất kho, bảo hành, bàn giao) bản Word in, theo hóa đơn | JSON như giay-to-khach-hang/KFFan/bo3phieu_HD2640.json (có kiểm tổng khớp hóa đơn) rồi `python3 cong-cu/tao_bo3phieu.py don.json` |
 | Ảnh dấu/chữ ký mới | `python3 cong-cu/tach_nen_muc.py anh.jpg ra.png do|xanh [tam_x,tam_y,ban_kinh]` |
 ## Thông số đã chốt
 - A4, lề trên/dưới 20 mm, trái 30 mm, phải 20 mm (NĐ 30/2020/NĐ-CP, Phụ lục I). Times New Roman 12.

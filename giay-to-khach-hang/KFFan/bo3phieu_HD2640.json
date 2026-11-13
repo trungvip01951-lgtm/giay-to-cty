@@ -1,0 +1,11 @@
+{
+  "khach": {"ten": "CÔNG TY TNHH KF FAN", "mst": "2301384882",
+            "dia_chi": "Đường 286, Thôn An Ninh, Xã Văn Môn, Thành phố Bắc Ninh, Việt Nam", "dien_thoai": ""},
+  "ngay": [2, 10, 2026],
+  "can_cu": "Xuất hàng theo Hóa đơn GTGT số 2640, ký hiệu C26TYY, ngày 02/10/2026",
+  "hang": [{"ten": "Máy bơm nước model 4S A8/37", "dvt": "Bộ", "sl": 1, "don_gia": 10350000}],
+  "vat_phan_tram": 8,
+  "bao_hanh": "12 tháng",
+  "kiem_tra_hoa_don": {"cong_tien_hang": 10350000, "tien_thue": 828000, "tong": 11178000},
+  "ten_tep": "Bo3Phieu_HD2640_KFFan"
+}

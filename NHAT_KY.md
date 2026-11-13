@@ -45,3 +45,4 @@
 - Sửa từ bản gốc goc/HDKT102026-TK-S5_goc.docx: máy thổi khí con sò PEROTAC GB-5500S SL 1→8, đơn giá 13.700.000→13.500.000; thành tiền 108.000.000, VAT 8% 8.640.000, tổng 116.640.000 (bằng chữ sửa theo). Sửa lỗi gõ "PDG"→"PGD", "echcombank"→"Techcombank".
 - Làm bản CoDau (3 trang, giáp lai + dấu/chữ ký khối Đại diện bên bán) và bản Scan.
 - Còn thiếu: tên công ty bên mua đang ghi "quạt sò 5KW" – chờ anh gửi tên đúng.
+- 13/11/2026: bộ 3 phiếu (phiếu xuất kho, phiếu bảo hành, biên bản bàn giao) bản Word để in cho CÔNG TY TNHH KF FAN (MST 2301384882) theo Hóa đơn GTGT số 2640, ký hiệu C26TYY, ngày 02/10/2026: 01 bộ máy bơm nước model 4S A8/37, 10.350.000 + VAT 828.000 = 11.178.000 (khớp hóa đơn, kiểm bằng mã). Ngày các phiếu: 02/10/2026. Bảo hành 12 tháng (mẫu chuẩn; hóa đơn không ghi hãng). Phiếu bảo hành/bàn giao in tên Nguyễn Trung; phiếu xuất kho để trống tên. Công cụ mới cong-cu/tao_bo3phieu.py (JSON giay-to-khach-hang/KFFan/bo3phieu_HD2640.json).
