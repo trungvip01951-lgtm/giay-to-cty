@@ -40,3 +40,8 @@
 - 11/11/2026: HĐ Tuấn Hưng sửa giá con 1 80WC45-20-5.5 thành 10.500.000 x6 = 63.000.000; tổng tiền hàng 650.600.000 + VAT 52.048.000 = 702.648.000; cọc 30% 210.794.400, 70% 491.853.600.
 - 11/11/2026: lần đầu làm giấy tờ THỊNH VƯỢNG (anh Trung bảo): Hợp đồng 1111/2026/HĐMB/TV/MQ ngày 11/11/2026, bên bán Thịnh Vượng (du-lieu/cong_ty_thinh_vuong.json mới, lấy từ hồ sơ 1.2 + báo giá), bên mua CÔNG TY CỔ PHẦN THƯƠNG MẠI MẠNH QUYÊN (MST 4601613142). Hàng theo báo giá Thịnh Vượng 11/11/2026: bơm ly tâm inox đúc cánh hở 3kW 16.800.000; bơm đặt cạn Redpump JEXM 150 2.700.000; 19.500.000 + VAT 1.560.000 = 21.060.000; giá đã gồm vận chuyển. Thanh toán để 100% trước/ngay khi nhận hàng (báo giá không ghi tỷ lệ) - chờ anh xác nhận. tao_hopdong_giaonhan.py thêm ben_ban='thinh_vuong', ghi_chu_gia.
 - 11/11/2026: thêm vào HĐ 1111/2026/HĐMB/TV/MQ (Thịnh Vượng - Mạnh Quyên) 01 máy bơm ly tâm cánh hở PEROTAC DWO200T 1.5kW giá 4.800.000 chưa VAT (thông số theo trang bomnuocthai.com anh gửi); tổng mới 24.300.000 + VAT 1.944.000 = 26.244.000.
+
+## 13/11/2026 – HĐKT102026-TK-S5 (bên mua ghi "quạt sò 5KW", MST 0108169065)
+- Sửa từ bản gốc goc/HDKT102026-TK-S5_goc.docx: máy thổi khí con sò PEROTAC GB-5500S SL 1→8, đơn giá 13.700.000→13.500.000; thành tiền 108.000.000, VAT 8% 8.640.000, tổng 116.640.000 (bằng chữ sửa theo). Sửa lỗi gõ "PDG"→"PGD", "echcombank"→"Techcombank".
+- Làm bản CoDau (3 trang, giáp lai + dấu/chữ ký khối Đại diện bên bán) và bản Scan.
+- Còn thiếu: tên công ty bên mua đang ghi "quạt sò 5KW" – chờ anh gửi tên đúng.
