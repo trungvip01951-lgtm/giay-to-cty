@@ -63,20 +63,25 @@ def build(bg, js):
         a = c[0].merge(c[3]); a.paragraphs[0].alignment = m.R; m.run(a.paragraphs[0], nhan, bold=True)
         c[4].paragraphs[0].alignment = m.C; m.run(c[4].paragraphs[0], so(v), bold=True)
     m.para(d, f"Bằng chữ: {doc_so(tong)}./.", bold=True, italic=True, after=6)
-    m.para(d, "Ghi chú:", bold=True, after=0)
-    for x in bg["ghi_chu"]:
-        m.para(d, f"- {x}", after=0, size=11)
+    for i, x in enumerate(bg["ghi_chu"]):
+        q = m.para(d, after=0)
+        if i == 0:
+            m.run(q, "Ghi chú: ", bold=True, size=11)
+        m.run(q, f"- {x}", size=11)
     m.para(d, "", after=0).paragraph_format.line_spacing = Pt(4)
     m.para(d, "PHƯƠNG THỨC THANH TOÁN VÀ GIAO HÀNG", bold=True, after=2)
     tt = [("Thanh toán", bg["thanh_toan"]), ("Giao hàng", bg["giao_hang"]), ("Địa điểm giao hàng", bg["dia_diem_giao"])]
     if len({v for _, v in tt}) == 1:
         tt = [("Thanh toán, giao hàng", f"{tt[0][1]} (thời gian, địa điểm giao hàng và cách thanh toán)")]
     bang_2cot(d, tt + [("Chuyển khoản", f"{BANK['chu_tk']}\nSố TK: {BANK['so_tk']} – {BANK['ten']}")])
-    m.para(d, "Rất mong báo giá này đáp ứng được yêu cầu của Quý khách và sớm nhận được sự hợp tác.", italic=True, after=4)
-    m.sign_block(d, "XÁC NHẬN ĐẶT HÀNG", "ĐẠI DIỆN BÊN BÁN", left_note="(Ký, họ tên, đóng dấu)", gap=3)
+    if not bg.get("gon"):   # gon: bỏ câu chào cuối để chừa chỗ đóng dấu trên cùng trang
+      m.para(d, "Rất mong báo giá này đáp ứng được yêu cầu của Quý khách và sớm nhận được sự hợp tác.", italic=True, after=4)
+    m.ANH_DAU = bg.get("anh_dau")   # có ảnh dấu: chèn dấu + chữ ký Giám đốc vào khối bên bán
+    m.sign_block(d, "XÁC NHẬN ĐẶT HÀNG", "ĐẠI DIỆN BÊN BÁN", left_note="(Ký, họ tên, đóng dấu)", gap=3,
+                 right_name=m.DD["ho_ten"] if m.ANH_DAU else "")
     cuoi = d.paragraphs[-1]   # đoạn trống sau khối ký: thu nhỏ để không đẩy sang trang mới
     cuoi.paragraph_format.line_spacing = Pt(1); cuoi.paragraph_format.space_after = Pt(0)
-    p = pathlib.Path(js).parent / (bg["ten_tep"] + ".docx")
+    p = pathlib.Path(js).parent / (bg["ten_tep"] + ("_CoDau" if m.ANH_DAU else "") + ".docx")
     d.save(p)
     return p, cong, vat, tong
 
