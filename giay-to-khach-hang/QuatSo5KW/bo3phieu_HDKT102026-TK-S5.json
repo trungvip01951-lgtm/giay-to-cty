@@ -1,0 +1,10 @@
+{
+  "khach": {"ten": "............................................................", "mst": "0108169065", "dia_chi": "Thôn 4, Xã Thanh Trì, Thành phố Hà Nội", "dien_thoai": ""},
+  "ngay": [14, 11, 2026],
+  "can_cu": "Xuất hàng theo Hợp đồng kinh tế số HĐKT102026-TK-S5 ngày 23/10/2026",
+  "hang": [{"ten": "Máy thổi khí con sò\nHiệu PEROTAC\nModel: GB-5500S\nLưu lượng max: 530 m3/h\nÁp lực max: 42 KPa\nCông suất: 5.5 kW / 3 Pha/380V/50Hz\nXuất xứ: Đài Loan", "dvt": "cái", "sl": 8, "don_gia": 13500000}],
+  "vat_phan_tram": 8,
+  "bao_hanh": "12 tháng",
+  "kiem_tra_hoa_don": {"cong_tien_hang": 108000000, "tien_thue": 8640000, "tong": 116640000},
+  "ten_tep": "Bo3Phieu_HDKT102026-TK-S5"
+}
