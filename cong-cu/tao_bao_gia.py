@@ -11,7 +11,7 @@ from docx.shared import Cm, Pt  # noqa: E402
 TK, BANK = m.TK, m.BANK
 
 
-def bang_2cot(d, rows, w=(3.6, 12.4)):
+def bang_2cot(d, rows, w=(4.4, 11.6)):
     t = d.add_table(rows=0, cols=2); t.autofit = False
     m.shade_borders(t)
     for a, b in rows:
@@ -37,23 +37,14 @@ def build(bg, js):
     m.para(d, f"HN: {TK['dia_chi']}", align=m.L, after=0)
     m.para(d, f"HCM: {TK['dia_diem_kinh_doanh_hcm']['dia_chi']}", align=m.L, after=0)
     m.para(d, f"Điện thoại: {TK['dien_thoai']}   |   MST: {TK['mst']}", align=m.L, after=10)
-    m.para(d, "BẢNG CHÀO GIÁ THIẾT BỊ", bold=True, align=m.C, size=16, after=8)
+    m.para(d, "BẢNG CHÀO GIÁ THIẾT BỊ", bold=True, align=m.C, size=16, after=0)
+    m.para(d, f"Số: {bg['so']}  –  Ngày {ngay.strftime('%d/%m/%Y')}", italic=True, align=m.C, after=6)
     m.para(d, "THÔNG TIN KHÁCH HÀNG", bold=True, after=2)
-    t = d.add_table(rows=3, cols=4); t.autofit = False
-    m.shade_borders(t)
-    val = [("Khách hàng", k.get("ten") or "", "Số báo giá", bg["so"]),
-           ("Điện thoại", k.get("dien_thoai") or "", "Ngày báo giá", ngay.strftime("%d/%m/%Y")),
-           ("Địa chỉ", k.get("dia_chi") or "", "", "")]
-    for r, v in zip(t.rows, val):
-        for i, x in enumerate(v):
-            q = r.cells[i].paragraphs[0]; q.paragraph_format.space_after = Pt(0)
-            m.run(q, x, bold=i in (0, 2), size=11)
-    m.fix_layout(t, [2.6, 7.4, 2.6, 3.4])
-    a = t.rows[2].cells[1].merge(t.rows[2].cells[3])
-    for q in a.paragraphs[1:]:
-        q._element.getparent().remove(q._element)
-    g = d.add_paragraph(); g.paragraph_format.space_after = Pt(0); g.paragraph_format.line_spacing = Pt(6)
-    m.para(d, "Kính gửi Quý khách hàng báo giá sản phẩm có thông số như sau:", after=2)
+    dong2 = (("Mã số thuế", k["mst"] + (f" – ĐT: {k['dien_thoai']}" if k.get("dien_thoai") else ""))
+             if k.get("mst") else ("Điện thoại", k.get("dien_thoai") or ""))
+    bang_2cot(d, [("Khách hàng", k.get("ten") or ""), dong2, ("Địa chỉ", k.get("dia_chi") or "")], w=(2.6, 13.4))
+    if not bg.get("gon"):
+        m.para(d, "Kính gửi Quý khách hàng báo giá sản phẩm có thông số như sau:", after=2)
     rows = [[str(i), h["ten"], f"{h['sl']} {h['dvt']}", so(h["don_gia"]), so(h["sl"] * h["don_gia"])]
             for i, h in enumerate(hang, 1)]
     t = m.table(d, ["STT", "Thông số thiết bị", "Số lượng", "Đơn giá (VNĐ)", "Thành tiền (VNĐ)"], rows,
@@ -72,7 +63,7 @@ def build(bg, js):
     m.para(d, "PHƯƠNG THỨC THANH TOÁN VÀ GIAO HÀNG", bold=True, after=2)
     tt = [("Thanh toán", bg["thanh_toan"]), ("Giao hàng", bg["giao_hang"]), ("Địa điểm giao hàng", bg["dia_diem_giao"])]
     if len({v for _, v in tt}) == 1:
-        tt = [("Thanh toán, giao hàng", f"{tt[0][1]} (thời gian, địa điểm giao hàng và cách thanh toán)")]
+        tt = [("Thanh toán, giao hàng", tt[0][1])]
     bang_2cot(d, tt + [("Chuyển khoản", f"{BANK['chu_tk']}\nSố TK: {BANK['so_tk']} – {BANK['ten']}")])
     if not bg.get("gon"):   # gon: bỏ câu chào cuối để chừa chỗ đóng dấu trên cùng trang
       m.para(d, "Rất mong báo giá này đáp ứng được yêu cầu của Quý khách và sớm nhận được sự hợp tác.", italic=True, after=4)

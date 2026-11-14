@@ -6,13 +6,14 @@
     14
   ],
   "khach": {
-    "ten": "",
+    "ten": "CÔNG TY TNHH THIẾT BỊ THÔNG MINH ZHENG HE (VIETNAM)",
+    "mst": "0110546592",
     "dien_thoai": "",
-    "dia_chi": ""
+    "dia_chi": "NT06-216, Dự án khu đô thị Gia Lâm, Vinhomes Ocean Park, xã Gia Lâm, thành phố Hà Nội, Việt Nam"
   },
   "hang": [
     {
-      "ten": "Máy bơm chìm\nHiệu REDPUMP\nModel: CSM50-160B\nCông suất: 1.5 kW / 1 Pha/220V/50Hz\nLưu lượng định mức: 6 m³/h\nCột áp: 27 m\nChịu nhiệt chất lỏng: ≥ 80°C\nXuất xứ: Trung Quốc",
+      "ten": "Máy bơm chìm\nHiệu REDPUMP\nModel: CSM50-160B\nCông suất: 1.5 kW / 1 Pha/220V/50Hz\nLưu lượng định mức: 6 m³/h\nCột áp: 27 m\nChịu nhiệt độ chất lỏng: 80°C\nXuất xứ: Trung Quốc",
       "dvt": "cái",
       "sl": 4,
       "don_gia": 7550000
@@ -31,6 +32,6 @@
   "thanh_toan": "Theo thỏa thuận của 2 bên",
   "giao_hang": "Theo thỏa thuận của 2 bên",
   "dia_diem_giao": "Theo thỏa thuận của 2 bên",
-  "ten_tep": "BaoGia_REDPUMP_CSM50-160B_14112026",
+  "ten_tep": "BaoGia_REDPUMP_CSM50-160B_14112026_ZhengHe",
   "gon": true
 }
