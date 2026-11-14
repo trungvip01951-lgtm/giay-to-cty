@@ -86,6 +86,8 @@ def build(don):
         m.para(d, f"Mã số thuế: {k['mst']}", after=0)
     m.para(d, f"Điện thoại: {dt}", after=0)
     m.para(d, f"Địa chỉ: {k['dia_chi']}", after=0)
+    if k.get("dia_diem_giao"):
+        m.para(d, f"Địa điểm giao hàng: {k['dia_diem_giao']}", after=0)
     m.para(d, f"Nội dung: {don['can_cu']}", after=6)
     rows = [[str(i), "Kho Hà Nội", h["ten"], h["dvt"], str(h["sl"]), so(h["don_gia"]), so(h["sl"] * h["don_gia"])]
             for i, h in enumerate(hang, 1)]
@@ -139,6 +141,10 @@ def build(don):
     m.para(d, f"Người đại diện: {TK['dai_dien']['ho_ten']}          Chức vụ: {TK['dai_dien']['chuc_vu']}", after=4)
     m.mixed(d, [("Bên nhận: ", True), (k["ten"], True)], after=0)
     m.para(d, f"Địa chỉ: {k['dia_chi']}", after=0)
+    if k.get("dia_diem_giao"):
+        m.para(d, f"Địa điểm giao hàng: {k['dia_diem_giao']}", after=0)
+    if k.get("dien_thoai"):
+        m.para(d, f"Điện thoại: {k['dien_thoai']}", after=0)
     m.para(d, f"Người đại diện: {m.dots(30)}          Chức vụ: {m.dots(20)}", after=4)
     m.para(d, f"Căn cứ: {don['can_cu'].replace('Xuất hàng theo ', '')}.", after=2)
     m.para(d, "Cùng tiến hành bàn giao hàng hóa sau:", after=2)

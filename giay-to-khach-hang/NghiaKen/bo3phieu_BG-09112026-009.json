@@ -3,8 +3,9 @@
     "ten": "CÔNG TY TNHH SẢN XUẤT CHẾ BIẾN THỰC PHẨM QUY NHƠN",
     "mst": "4101484918",
     "dia_chi": "Tổ 21, khu vực 3, Phường Quy Nhơn Đông, tỉnh Gia Lai",
-    "dien_thoai": "",
-    "lien_he": "Nghĩa Ken"
+    "dien_thoai": "0865977007",
+    "lien_he": "Nghĩa Ken",
+    "dia_diem_giao": "Lò giết mổ tập trung Nhơn Bình (Tổ 21, khu vực 3, Phường Quy Nhơn Đông, tỉnh Gia Lai)"
   },
   "ngay": [
     14,
@@ -33,5 +34,10 @@
     "tien_thue": 4288000,
     "tong": 57888000
   },
-  "ten_tep": "Bo3Phieu_BG-09112026-009_QuyNhon"
+  "ten_tep": "Bo3Phieu_BG-09112026-009_QuyNhon",
+  "nhan": {
+    "ten_hang": "Bơm chìm nước thải PEROTAC – Model: 80WC45-25-7.5 (7.5 KW / 3 Pha/380V)",
+    "so_kien": 4,
+    "ghi_chu": "CHỜ KHÁCH CHUYỂN KHOẢN"
+  }
 }
