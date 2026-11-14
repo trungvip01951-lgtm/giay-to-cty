@@ -146,7 +146,8 @@ def build(don):
     if k.get("dien_thoai"):
         m.para(d, f"Điện thoại: {k['dien_thoai']}", after=0)
     m.para(d, f"Người đại diện: {m.dots(30)}          Chức vụ: {m.dots(20)}", after=4)
-    m.para(d, f"Căn cứ: {don['can_cu'].replace('Xuất hàng theo ', '')}.", after=2)
+    if don["can_cu"].startswith("Xuất hàng theo "):
+        m.para(d, f"Căn cứ: {don['can_cu'].replace('Xuất hàng theo ', '')}.", after=2)
     m.para(d, "Cùng tiến hành bàn giao hàng hóa sau:", after=2)
     m.table(d, ["STT", "Hàng hóa / Model", "Số lượng"],
             [[str(i), h["ten"], f"{h['sl']} {h['dvt'].lower()}"] for i, h in enumerate(hang, 1)],
