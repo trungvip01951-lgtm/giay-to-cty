@@ -14,7 +14,7 @@ TK = m.TK
 TEN_GIAO = "Nguyễn Trung"
 
 
-def ky(d, cot, ten=None):
+def ky(d, cot, ten=None, gap=4):
     """cot: list tiêu đề; ten: {chỉ số cột: tên in sẵn}"""
     ten = ten or {}
     n = len(cot)
@@ -30,7 +30,7 @@ def ky(d, cot, ten=None):
             continue
         q = c.add_paragraph(); q.alignment = m.C
         m.run(q, "(Ký, ghi rõ họ tên)", italic=True)
-        for _ in range(4):
+        for _ in range(gap):
             c.add_paragraph()
         if i in ten:
             r = c.add_paragraph(); r.alignment = m.C
@@ -56,12 +56,17 @@ def dau_trang_qh(d, nd):
 
 
 def ngat_trang(d):
-    d.add_paragraph().add_run().add_break(WD_BREAK.PAGE)
+    p = d.add_paragraph()
+    p.paragraph_format.space_after = Pt(0)
+    p.paragraph_format.line_spacing = Pt(1)
+    r = p.add_run(); r.font.size = Pt(1)
+    r.add_break(WD_BREAK.PAGE)
 
 
 def build(don):
     k, nd, hang = don["khach"], don["ngay"], don["hang"]
     dt = k.get("dien_thoai") or m.dots(30)
+    k = dict(k, dia_chi=k.get("dia_chi") or m.dots(70))
     cong = sum(h["sl"] * h["don_gia"] for h in hang)
     vat = cong * don["vat_phan_tram"] // 100
     tong = cong + vat
@@ -77,7 +82,8 @@ def build(don):
     m.para(d, "PHIẾU XUẤT KHO", bold=True, align=m.C, size=16, after=2)
     m.para(d, ngay_chu(nd), italic=True, align=m.C, after=8)
     m.mixed(d, [("Khách hàng: ", False), (k["ten"], True)], after=0)
-    m.para(d, f"Mã số thuế: {k['mst']}", after=0)
+    if k.get("mst"):
+        m.para(d, f"Mã số thuế: {k['mst']}", after=0)
     m.para(d, f"Điện thoại: {dt}", after=0)
     m.para(d, f"Địa chỉ: {k['dia_chi']}", after=0)
     m.para(d, f"Nội dung: {don['can_cu']}", after=6)
@@ -95,8 +101,7 @@ def build(don):
 
     # 2. PHIẾU BẢO HÀNH
     dau_trang_qh(d, nd)
-    m.para(d, "", after=4)
-    m.para(d, "PHIẾU BẢO HÀNH", bold=True, align=m.C, size=16, after=8)
+    m.para(d, "PHIẾU BẢO HÀNH", bold=True, align=m.C, size=16, after=6)
     m.para(d, "Các bên có liên quan:", after=2)
     m.para(d, "I. BÊN MUA HÀNG:", bold=True, after=0)
     m.mixed(d, [("Khách hàng: ", False), (k["ten"], True)], after=0)
@@ -109,20 +114,20 @@ def build(don):
     m.para(d, "Nội dung bảo hành:", after=2)
     m.table(d, ["STT", "Tên sản phẩm / Model", "Đơn vị", "Số lượng"],
             [[str(i), h["ten"], h["dvt"], str(h["sl"])] for i, h in enumerate(hang, 1)],
-            [1.2, 10.0, 2.4, 2.4], center_cols=(0, 2, 3))
+            [1.2, 10.0, 2.4, 2.4], size=11, center_cols=(0, 2, 3))
     for x in ["I./ Bên bán hàng cam kết bảo hành cho những hàng hoá đã giao theo Biên bản bàn giao hàng hoá.",
               f"II./ Thời gian bảo hành: {don['bao_hanh']} kể từ ngày ký biên bản bàn giao đưa vào sử dụng.",
               "III./ Điều kiện bảo hành: Bảo hành cho những lỗi của nhà sản xuất.",
               f"IV./ Địa điểm bảo hành: {TK['dia_chi']}",
               "V./ Những trường hợp không được bảo hành:"]:
-        m.para(d, x, after=1)
+        m.para(d, x, after=1, size=11)
     for x in ["1./ Khách hàng không có phiếu bảo hành hoặc phiếu bảo hành bị sửa chữa, rách nát, thiếu, sai lệch thông số.",
               "2./ Hư hỏng do những nguyên nhân khách quan, các trường hợp bất khả kháng.",
               "3./ Những hư hỏng do dùng sai điện áp quy định hoặc do nguồn điện không ổn định.",
               "4./ Những hư hỏng khác không do lỗi của nhà sản xuất."]:
-        p = m.para(d, x, after=1); p.paragraph_format.left_indent = Cm(0.6)
-    m.para(d, "Trân trọng cảm ơn Quý khách hàng đã sử dụng sản phẩm và dịch vụ của công ty chúng tôi.", italic=True, after=8)
-    ky(d, ["", "ĐẠI DIỆN BÊN BÁN"], {1: TEN_GIAO})
+        p = m.para(d, x, after=1, size=11); p.paragraph_format.left_indent = Cm(0.6)
+    m.para(d, "Trân trọng cảm ơn Quý khách hàng đã sử dụng sản phẩm và dịch vụ của công ty chúng tôi.", italic=True, after=4)
+    ky(d, ["", "ĐẠI DIỆN BÊN BÁN"], {1: TEN_GIAO}, gap=3)
     ngat_trang(d)
 
     # 3. BIÊN BẢN BÀN GIAO
