@@ -1,11 +1,35 @@
 {
-  "khach": {"ten": "CÔNG TY TRẦN DŨNG", "mst": "", "dia_chi": "Cầu Hổ, Mai Lâm, Nghi Sơn, Thanh Hóa", "dien_thoai": "0369282561"},
-  "ngay": [14, 11, 2026],
+  "khach": {
+    "ten": "CÔNG TY TRẦN DŨNG",
+    "mst": "",
+    "dia_chi": "Cầu Hổ, Mai Lâm, Nghi Sơn, Thanh Hóa",
+    "dien_thoai": "0369282561"
+  },
+  "ngay": [
+    14,
+    11,
+    2026
+  ],
   "can_cu": "Xuất bán hàng cho khách",
-  "hang": [{"ten": "Máy bơm chìm NTP HSM280-11.5 265 (2HP)\nThương hiệu: NTP\nModel: HSM280-11.5 265 (T)\nCông suất: 2 HP\nĐiện áp: 220V\nCột áp: 13 m\nLưu lượng: 700 lít/phút\nXuất xứ: Việt Nam", "dvt": "cái", "sl": 1, "don_gia": 7500000}],
+  "hang": [
+    {
+      "ten": "Máy bơm chìm NTP HSM280-11.5 265 (2HP)\nThương hiệu: NTP\nModel: HSM280-11.5 265 (T)\nCông suất: 2 HP\nĐiện áp: 220V\nCột áp: 13 m\nLưu lượng: 700 lít/phút\nXuất xứ: Việt Nam",
+      "dvt": "cái",
+      "sl": 2,
+      "don_gia": 7500000
+    }
+  ],
   "vat_phan_tram": 8,
   "bao_hanh": "12 tháng",
-  "kiem_tra_hoa_don": {"cong_tien_hang": 7500000, "tien_thue": 600000, "tong": 8100000},
-  "nhan": {"ten_hang": "Máy bơm chìm NTP – Model: HSM280-11.5 265 (T) (2 HP / 220V)", "so_kien": 1, "ghi_chu": ""},
+  "kiem_tra_hoa_don": {
+    "cong_tien_hang": 15000000,
+    "tien_thue": 1200000,
+    "tong": 16200000
+  },
+  "nhan": {
+    "ten_hang": "Máy bơm chìm NTP – Model: HSM280-11.5 265 (T) (2 HP / 220V)",
+    "so_kien": 2,
+    "ghi_chu": ""
+  },
   "ten_tep": "Bo3Phieu_14112026_TranDung"
 }
