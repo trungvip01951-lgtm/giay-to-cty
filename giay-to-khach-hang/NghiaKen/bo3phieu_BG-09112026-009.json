@@ -1,13 +1,37 @@
 {
-  "khach": {"ten": "Nghĩa Ken", "mst": "", "dia_chi": "", "dien_thoai": ""},
-  "ngay": [14, 11, 2026],
+  "khach": {
+    "ten": "CÔNG TY TNHH SẢN XUẤT CHẾ BIẾN THỰC PHẨM QUY NHƠN",
+    "mst": "4101484918",
+    "dia_chi": "Tổ 21, khu vực 3, Phường Quy Nhơn Đông, tỉnh Gia Lai",
+    "dien_thoai": "",
+    "lien_he": "Nghĩa Ken"
+  },
+  "ngay": [
+    14,
+    11,
+    2026
+  ],
   "can_cu": "Xuất hàng theo báo giá số BG-09112026-009 ngày 28/10/2026",
   "hang": [
-    {"ten": "Bơm chìm nước thải\nHiệu PEROTAC\nModel: 80WC45-25-7.5\nLưu lượng max: 100 m³/h\nCột áp max: 40 m\nCông suất: 7.5 KW / 3 Pha/380V/50Hz\nXuất xứ: Đài Loan", "dvt": "cái", "sl": 4, "don_gia": 12900000},
-    {"ten": "Bích nối", "dvt": "cái", "sl": 4, "don_gia": 500000}
+    {
+      "ten": "Bơm chìm nước thải\nHiệu PEROTAC\nModel: 80WC45-25-7.5\nLưu lượng max: 100 m³/h\nCột áp max: 40 m\nCông suất: 7.5 KW / 3 Pha/380V/50Hz\nXuất xứ: Đài Loan",
+      "dvt": "cái",
+      "sl": 4,
+      "don_gia": 12900000
+    },
+    {
+      "ten": "Bích nối",
+      "dvt": "cái",
+      "sl": 4,
+      "don_gia": 500000
+    }
   ],
   "vat_phan_tram": 8,
   "bao_hanh": "12 tháng",
-  "kiem_tra_hoa_don": {"cong_tien_hang": 53600000, "tien_thue": 4288000, "tong": 57888000},
-  "ten_tep": "Bo3Phieu_BG-09112026-009_NghiaKen"
+  "kiem_tra_hoa_don": {
+    "cong_tien_hang": 53600000,
+    "tien_thue": 4288000,
+    "tong": 57888000
+  },
+  "ten_tep": "Bo3Phieu_BG-09112026-009_QuyNhon"
 }
