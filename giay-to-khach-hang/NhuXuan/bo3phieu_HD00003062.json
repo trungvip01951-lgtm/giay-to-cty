@@ -1,0 +1,40 @@
+{
+  "khach": {
+    "ten": "CÔNG TY TNHH PHÁT TRIỂN CHĂN NUÔI NHƯ XUÂN",
+    "mst": "2802615756",
+    "dia_chi": "Thôn Thanh Sơn, Xã Thanh Quân, Tỉnh Thanh Hóa, Việt Nam",
+    "dien_thoai": "",
+    "stk": "",
+    "ngan_hang": "",
+    "dai_dien": "",
+    "chuc_vu": ""
+  },
+  "ngay": [
+    14,
+    11,
+    2026
+  ],
+  "can_cu": "Xuất hàng theo Hóa đơn GTGT số 00003062, ký hiệu 1C26TYY, ngày 14/11/2026",
+  "hang": [
+    {
+      "ten": "Máy bơm nước\nModel: 65WC25-15-2.2",
+      "dvt": "cái",
+      "sl": 3,
+      "don_gia": 6100000
+    },
+    {
+      "ten": "Máy bơm nước\nModel: 100WC100-15-7.5",
+      "dvt": "cái",
+      "sl": 2,
+      "don_gia": 14840000
+    }
+  ],
+  "vat_phan_tram": 8,
+  "bao_hanh": "12 tháng",
+  "kiem_tra_hoa_don": {
+    "cong_tien_hang": 47980000,
+    "tien_thue": 3838400,
+    "tong": 51818400
+  },
+  "ten_tep": "Bo3Phieu_HD00003062_NhuXuan"
+}

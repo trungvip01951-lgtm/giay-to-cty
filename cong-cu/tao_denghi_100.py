@@ -33,6 +33,8 @@ def build(don, anh_dau, out_dir):
         m.para(d, f"Căn cứ Báo giá số {don['bao_gia_so']} ngày {don['bao_gia_ngay']} của {TK['ten']} về việc cung cấp {don['hang']};")
     else:
         m.para(d, f"Căn cứ báo giá của {TK['ten']} đã được hai bên thống nhất về việc cung cấp {don['hang']};")
+    if don.get("can_cu_them"):          # ví dụ: Căn cứ Hóa đơn GTGT số ... ngày ...;
+        m.para(d, don["can_cu_them"])
     m.para(d, f"Căn cứ phương thức thanh toán: {don['thoi_han']},")
     m.para(d, f"chúng tôi kính đề nghị Quý Công ty thanh toán {don['ty_le_thanh_toan']}% giá trị đơn hàng như sau:", after=4)
     m.table(d, ["Nội dung", "Số tiền (đồng)"],
