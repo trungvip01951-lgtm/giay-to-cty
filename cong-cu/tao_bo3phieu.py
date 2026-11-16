@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Bộ 3 phiếu bản Word để in: Phiếu xuất kho, Phiếu bảo hành, Biên bản bàn giao (mỗi phiếu 1 trang).
 Bố cục theo bộ phiếu phần mềm báo giá (giay-to-khach-hang/Xcelwood/goc). Tên in sẵn: "Nguyễn Trung" dưới
-đại diện bên giao/bên bán ở phiếu bảo hành và biên bản bàn giao (QUY_TAC 10/11/2026); phiếu xuất kho để trống tên.
+đại diện bên giao/bên bán ở phiếu bảo hành, biên bản bàn giao (QUY_TAC 10/11/2026) và phiếu xuất kho (anh chốt 16/11/2026).
 Chạy: python3 cong-cu/tao_bo3phieu.py giay-to-khach-hang/<khach>/bo3phieu_x.json"""
 import json, pathlib, sys
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
@@ -98,7 +98,7 @@ def build(don):
         a = c[0].merge(c[5]); a.paragraphs[0].alignment = m.R; m.run(a.paragraphs[0], nhan, bold=True)
         c[6].paragraphs[0].alignment = m.C; m.run(c[6].paragraphs[0], so(v), bold=True)
     m.para(d, f"Bằng chữ: {doc_so(tong)}./.", italic=True, after=10)
-    ky(d, ["Đại diện bên bán", "Người nhận hàng", "Thủ kho"])
+    ky(d, ["Đại diện bên bán", "Người nhận hàng", "Thủ kho"], {0: TEN_GIAO})
     ngat_trang(d)
 
     # 2. PHIẾU BẢO HÀNH
