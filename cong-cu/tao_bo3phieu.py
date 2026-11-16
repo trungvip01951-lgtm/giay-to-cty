@@ -68,11 +68,11 @@ def build(don):
     dt = k.get("dien_thoai") or m.dots(30)
     k = dict(k, dia_chi=k.get("dia_chi") or m.dots(70))
     cong = sum(h["sl"] * h["don_gia"] for h in hang)
-    vat = cong * don["vat_phan_tram"] // 100
-    tong = cong + vat
+    vat = cong * don["vat_phan_tram"] // 100 if don.get("vat_phan_tram") is not None else None   # None: không tách VAT
+    tong = cong + (vat or 0)
     kt = don.get("kiem_tra_hoa_don")
     if kt:
-        assert (cong, vat, tong) == (kt["cong_tien_hang"], kt["tien_thue"], kt["tong"]), (cong, vat, tong)
+        assert (cong, vat or 0, tong) == (kt["cong_tien_hang"], kt["tien_thue"], kt["tong"]), (cong, vat, tong)
     d = m.new_doc()
 
     # 1. PHIẾU XUẤT KHO
@@ -93,7 +93,8 @@ def build(don):
             for i, h in enumerate(hang, 1)]
     t = m.table(d, ["STT", "Mã kho", "Tên vật tư / Model", "ĐVT", "SL", "Đơn giá", "Thành tiền"], rows,
                 [1.3, 2.0, 5.1, 1.3, 1.0, 2.6, 2.7], size=12, center_cols=(0, 1, 3, 4, 5, 6))
-    for nhan, v in (("Cộng:", cong), (f"VAT {don['vat_phan_tram']}%:", vat), ("Tổng tiền thanh toán:", tong)):
+    dong_tien = ((("Cộng:", cong), (f"VAT {don['vat_phan_tram']}%:", vat)) if vat is not None else ()) + (("Tổng tiền thanh toán:", tong),)
+    for nhan, v in dong_tien:
         c = t.add_row().cells
         a = c[0].merge(c[5]); a.paragraphs[0].alignment = m.R; m.run(a.paragraphs[0], nhan, bold=True)
         c[6].paragraphs[0].alignment = m.C; m.run(c[6].paragraphs[0], so(v), bold=True)
