@@ -1,0 +1,44 @@
+{
+  "khach": {
+    "ten": "CÔNG TY TNHH CƠ KHÍ SẢN XUẤT VIỆT TÍN",
+    "mst": "2700874871",
+    "dia_chi": "Xóm 6, Xã Bình Minh, Tỉnh Ninh Bình, Việt Nam",
+    "dien_thoai": ""
+  },
+  "ngay": [
+    12,
+    11,
+    2026
+  ],
+  "can_cu": "Xuất hàng theo đơn đặt hàng ngày 12/11/2026",
+  "hang": [
+    {
+      "ten": "Máy bơm ly tâm cánh hở\nHiệu PEROTAC\nModel: DWO150T",
+      "dvt": "cái",
+      "sl": 1,
+      "don_gia": 3900000
+    },
+    {
+      "ten": "Máy bơm ly tâm cánh hở\nHiệu PEROTAC\nModel: DWO200T",
+      "dvt": "cái",
+      "sl": 3,
+      "don_gia": 4100000
+    },
+    {
+      "ten": "Máy bơm ly tâm cánh hở\nHiệu PEROTAC\nModel: DWO400T",
+      "dvt": "cái",
+      "sl": 1,
+      "don_gia": 5000000
+    }
+  ],
+  "vat_phan_tram": null,
+  "bao_hanh": "12 tháng",
+  "kiem_tra_hoa_don": {
+    "cong_tien_hang": 21200000,
+    "tien_thue": 0,
+    "tong": 21200000
+  },
+  "ten_tep": "Bo3Phieu_12112026_VietTin_choDau",
+  "gap_ky": 6,
+  "gap_ky_bh": 6
+}

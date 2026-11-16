@@ -116,7 +116,8 @@ def build(don):
     m.para(d, f"Điện thoại: {TK['dien_thoai']}", after=4)
     m.para(d, "Nội dung bảo hành:", after=2)
     m.table(d, ["STT", "Tên sản phẩm / Model", "Đơn vị", "Số lượng"],
-            [[str(i), h["ten"], h["dvt"], str(h["sl"])] for i, h in enumerate(hang, 1)],
+            [[str(i), " ".join(x.replace("Hiệu ", "").replace("Model: ", "") for x in h["ten"].split("\n")) if don.get("gap_ky_bh") else h["ten"], h["dvt"], str(h["sl"])]
+             for i, h in enumerate(hang, 1)],   # bản đóng dấu: tên hàng 1 dòng để đủ chỗ dấu
             [1.2, 10.0, 2.4, 2.4], size=11, center_cols=(0, 2, 3))
     for x in ["I./ Bên bán hàng cam kết bảo hành cho những hàng hoá đã giao theo Biên bản bàn giao hàng hoá.",
               f"II./ Thời gian bảo hành: {don['bao_hanh']} kể từ ngày ký biên bản bàn giao đưa vào sử dụng.",
@@ -130,7 +131,7 @@ def build(don):
               "4./ Những hư hỏng khác không do lỗi của nhà sản xuất."]:
         p = m.para(d, x, after=1, size=11); p.paragraph_format.left_indent = Cm(0.6)
     m.para(d, "Trân trọng cảm ơn Quý khách hàng đã sử dụng sản phẩm và dịch vụ của công ty chúng tôi.", italic=True, after=4)
-    ky(d, ["", "ĐẠI DIỆN BÊN BÁN"], {1: TEN_GIAO}, gap=3)
+    ky(d, ["", "ĐẠI DIỆN BÊN BÁN"], {1: TEN_GIAO}, gap=don.get("gap_ky_bh", 3))
     ngat_trang(d)
 
     # 3. BIÊN BẢN BÀN GIAO
@@ -156,7 +157,7 @@ def build(don):
     m.para(d, "Chất lượng: Hàng mới 100%", after=1)
     m.para(d, f"Bảo hành: {don['bao_hanh']}", after=1)
     m.para(d, "Hai bên tiến hành bàn giao với số lượng như trên. Biên bản được lập thành 02 bản, mỗi bên giữ 01 bản.", after=10)
-    ky(d, ["Đại diện bên nhận", "Đại diện bên giao"], {1: TEN_GIAO})
+    ky(d, ["Đại diện bên nhận", "Đại diện bên giao"], {1: TEN_GIAO}, gap=don.get("gap_ky", 4))
 
     p = pathlib.Path(sys.argv[1]).parent / (don["ten_tep"] + ".docx")
     d.save(p)
