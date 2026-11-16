@@ -1,0 +1,18 @@
+{
+  "so_pl": "YL513-260623-PL01",
+  "ngay_pl": "August 24, 2026",
+  "so_hd": "YL513-260623",
+  "ngay_hd": "June 23, 2026",
+  "ben_ban": {"ten": "YOULI ELECTRIC AND MACHINE CO.,LTD",
+              "dia_chi": "No. 96, Fugang Road, Shangma Industrial Park, Shitang Town, Wenling City, Taizhou City, Zhejiang Province, China"},
+  "ben_mua": {"ten": "TRUNG KIEN INDUSTRIAL AND TRADING COMPANY LIMITED",
+              "dia_chi": "No.5, Alley 196, Thach Ban Street, Long Bien Ward, Hanoi City, Vietnam",
+              "mst": "0109546164", "dai_dien": "Mr. NGUYEN VIET TRUNG – Director"},
+  "gia_tri_hang": 74827,
+  "cuoc": 900,
+  "dieu_kien_cu": "FOB Any Chinese port",
+  "dieu_kien_moi": "CIF Hai Phong Port (Dinh Vu Nam Hai), Vietnam",
+  "tuyen": "Ocean freight from Ningbo Port, China to Hai Phong Port, Vietnam",
+  "kiem_tra_tong": 75727,
+  "ten_tep": "Appendix_YL513-260623-PL01"
+}
