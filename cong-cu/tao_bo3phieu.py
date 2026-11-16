@@ -98,7 +98,7 @@ def build(don):
         a = c[0].merge(c[5]); a.paragraphs[0].alignment = m.R; m.run(a.paragraphs[0], nhan, bold=True)
         c[6].paragraphs[0].alignment = m.C; m.run(c[6].paragraphs[0], so(v), bold=True)
     m.para(d, f"Bằng chữ: {doc_so(tong)}./.", italic=True, after=10)
-    ky(d, ["Đại diện bên bán", "Người nhận hàng", "Thủ kho"], {0: TEN_GIAO})
+    ky(d, ["Đại diện bên bán", "Người nhận hàng", "Thủ kho"], {0: TEN_GIAO}, gap=don.get("gap_ky", 4))  # gap_ky lớn: chừa chỗ đóng dấu
     ngat_trang(d)
 
     # 2. PHIẾU BẢO HÀNH
