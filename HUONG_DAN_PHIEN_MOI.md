@@ -2,6 +2,7 @@
 ## Việc anh Trung hay nhờ và cách làm
 | Việc | Cách làm |
 |---|---|
+| Nhận đơn của khách (bước đầu tiên) | `python3 cong-cu/tra_khach.py <MST hoặc tên>` lấy thông tin từ du-lieu/khach_hang.json; khách có mẫu hợp đồng riêng (trường mau_hop_dong) thì làm theo mẫu đó. Thông tin mới thì cập nhật vào du-lieu/khach_hang.json |
 | Đề nghị thanh toán (hợp đồng chia 2 lần, hoặc phần còn lại) | Lấy mẫu giay-to-khach-hang/FATA/ và cong-cu/tao_denghi_fata.py làm gốc: đổi số hợp đồng, ngày, số tiền; tiền tính bằng mã, đối chiếu bảng công nợ nếu anh gửi; chữ bằng hàm doc_so. Có dấu: `python3 cong-cu/tao_denghi_fata.py dau-chu-ky/dau_chu_ky_moi_ghep.png thu_muc_ra` |
 | Mẫu giấy tờ Trung Kiên (thanh lý, nghiệm thu, ủy quyền, giới thiệu, phụ lục, đối chiếu công nợ, đơn đặt hàng, nhận hàng NK) | `python3 cong-cu/tao_mau.py` (không dấu, ra mau-giay-to/). Có dấu: `python3 cong-cu/tao_mau.py dau-chu-ky/dau_chu_ky_moi_ghep.png thu_muc_ra` |
 | Hợp đồng/phụ lục của khách (Word) cần dấu | Đổi sang PDF: `soffice --headless --convert-to pdf --outdir ra file.docx`; rồi `python3 cong-cu/chen_dau_pdf.py vao.pdf ra.pdf dau-chu-ky/dau_chu_ky_moi_ghep.png dau-chu-ky/dau_tron_sach.png`. Công cụ tự tìm khối "ĐẠI DIỆN BÊN BÁN" ở trang cuối, chèn dấu giáp lai mọi trang. Không sửa nội dung hợp đồng của khách; chỉ báo nếu thấy lỗi (ví dụ "PDG" thay vì "PGD") |
