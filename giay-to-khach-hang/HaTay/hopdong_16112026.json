@@ -1,0 +1,11 @@
+{
+  "khach": {"ten": "CÔNG TY TNHH MÔI TRƯỜNG VÀ XÂY DỰNG HÀ TÂY",
+            "dia_chi": "Số 9, Ngõ 57, Phố Vĩnh Tuy, Phường Vĩnh Tuy, Thành phố Hà Nội, Việt Nam",
+            "mst": "0111541621", "dai_dien": "Ông Ngô Tuấn Mạnh", "chuc_vu": "Giám đốc"},
+  "so_hd": "16112026.HĐKT.TK.HT",
+  "ngay_hd": [16, 11, 2026],
+  "ten_tep": "HopDong_16112026.HDKT.TK.HT_HaTay",
+  "hang": [{"ten": "Máy bơm chìm\nHiệu Firmly\nModel: HC750F\nCông suất: 0.75 kW / 1 Pha/220V/50Hz\nXuất xứ: Trung Quốc", "dvt": "cái", "sl": 2, "don_gia": 2400000}],
+  "vat_phan_tram": 8,
+  "kiem_tra_hoa_don": {"cong_tien_hang": 4800000, "tien_thue": 384000, "tong": 5184000}
+}
