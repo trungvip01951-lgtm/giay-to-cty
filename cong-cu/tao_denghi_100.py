@@ -21,9 +21,9 @@ def build(don, anh_dau, out_dir):
     m.ANH_DAU = anh_dau
     m.quoc_hieu(d)
     m.header_cty(d)
-    n = don["ngay_lap"]
+    n = don.get("ngay_lap") or (".....", ".....", 2026)   # null: để trống ngày cho anh điền tay
     m.para(d, f"Hà Nội, ngày {n[0]} tháng {n[1]} năm {n[2]}", italic=True, align=m.R, after=6)
-    m.para(d, "GIẤY ĐỀ NGHỊ THANH TOÁN", bold=True, align=m.C, size=15, after=6)
+    m.para(d, don.get("tieu_de", "GIẤY ĐỀ NGHỊ THANH TOÁN"), bold=True, align=m.C, size=15, after=6)
     m.mixed(d, [("Kính gửi: ", True), (don["khach"], True)])
     m.para(d, f"Địa chỉ: {don['dia_chi']}", after=0)
     m.para(d, f"Mã số thuế: {don['mst']}", after=6)

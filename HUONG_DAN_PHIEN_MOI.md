@@ -17,6 +17,7 @@
 | Bộ 3 phiếu (xuất kho, bảo hành, bàn giao) bản Word in, theo hóa đơn | JSON như giay-to-khach-hang/KFFan/bo3phieu_HD2640.json (có kiểm tổng khớp hóa đơn) rồi `python3 cong-cu/tao_bo3phieu.py don.json`. Bản có dấu: thêm "gap_ky": 6, "gap_ky_bh": 6 vào JSON, tạo lại, đổi PDF, `ky_dong_dau_tren_ten.py vao.pdf ra_CoDau.pdf dau-chu-ky/dau_tron_chu_ky_khong_ten.png 40 "Nguyễn Trung"`, rồi lam_ban_scan.py |
 | Nhãn gửi hàng dán kiện (PDF) | Thêm khóa "nhan" {ten_hang, so_kien, ghi_chu} vào JSON bộ 3 phiếu rồi `python3 cong-cu/tao_nhan_gui_hang.py don.json ra.pdf` |
 | Báo giá (bảng chào giá) Word + PDF | JSON như giay-to-khach-hang/BaoGia/bg_14112026_50GDL18-15x9.json rồi `python3 cong-cu/tao_bao_gia.py bg.json`, đổi PDF; kiểm 1 trang |
+| Hợp đồng thanh toán 2 lần (vd 70/30) + nghiệm thu + đề nghị TT từng lần | Mẫu giay-to-khach-hang/Watech/: hopdong_*.json ("thanh_toan": "2_lan", "lan1_phan_tram") → tao_hopdong_giaonhan.py và tao_nghiem_thu.py; denghi_lan*.json ("ngay_lap": null để trống ngày) → tao_denghi_100.py |
 | Ảnh dấu/chữ ký mới | `python3 cong-cu/tach_nen_muc.py anh.jpg ra.png do|xanh [tam_x,tam_y,ban_kinh]` |
 ## Thông số đã chốt
 - A4, lề trên/dưới 20 mm, trái 30 mm, phải 20 mm (NĐ 30/2020/NĐ-CP, Phụ lục I). Times New Roman 12.

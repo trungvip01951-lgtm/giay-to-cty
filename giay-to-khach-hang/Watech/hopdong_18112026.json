@@ -1,0 +1,55 @@
+{
+  "khach": {
+    "ten": "CÔNG TY CỔ PHẦN MÔI TRƯỜNG WATECH VIỆT NAM",
+    "mst": "0109223773",
+    "dia_chi": "Số 124 đường Tả Thanh Oai, Xã Đại Thanh, Thành phố Hà Nội, Việt Nam",
+    "dien_thoai": "",
+    "stk": "",
+    "ngan_hang": "",
+    "dai_dien": "",
+    "chuc_vu": ""
+  },
+  "ten_tep": "HopDong_Watech_18112026",
+  "ten_tep_nt": "BienBanNghiemThu_Watech_18112026",
+  "thanh_toan": "2_lan",
+  "lan1_phan_tram": 70,
+  "hang": [
+    {
+      "ten": "Máy bơm nước\nModel: SSm-180F",
+      "dvt": "cái",
+      "sl": 5,
+      "don_gia": 2500000
+    },
+    {
+      "ten": "Máy sục khí (Máy bơm không khí)\nModel: RL-50S",
+      "dvt": "chiếc",
+      "sl": 2,
+      "don_gia": 13500000
+    },
+    {
+      "ten": "Đĩa phân phối khí\nModel: DN260",
+      "dvt": "cái",
+      "sl": 2,
+      "don_gia": 230000
+    },
+    {
+      "ten": "Phao điện",
+      "dvt": "chiếc",
+      "sl": 2,
+      "don_gia": 200000
+    },
+    {
+      "ten": "Đĩa phân phối khí\nModel: RSD-168",
+      "dvt": "cái",
+      "sl": 2,
+      "don_gia": 150000
+    }
+  ],
+  "vat_phan_tram": 8,
+  "bao_hanh": "12 tháng",
+  "kiem_tra_hoa_don": {
+    "cong_tien_hang": 40660000,
+    "tien_thue": 3252800,
+    "tong": 43912800
+  }
+}
