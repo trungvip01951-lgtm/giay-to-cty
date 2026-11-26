@@ -1,0 +1,50 @@
+{
+  "khach": {
+    "ten": "CÔNG TY CỔ PHẦN INDOCHINA BUILD VIỆT NAM",
+    "mst": "0104835204",
+    "dia_chi": "Ô CN 6, khu Công nghiệp Nguyên Khê, Xã Phúc Thịnh, TP Hà Nội, Việt Nam",
+    "dien_thoai": "",
+    "dia_diem_giao": "Xuân Sơn, phường Tùng Thiện, thành phố Hà Nội"
+  },
+  "ngay": [
+    26,
+    11,
+    2026
+  ],
+  "can_cu": "Xuất hàng theo Hợp đồng mua bán số 2611/2026/HĐMB/ICB - TK ngày 26/11/2026",
+  "hang": [
+    {
+      "ten": "Bơm chìm nước thải AQUARIS\nModel: 200WC200-20-22\nQmax 500 m³/h; Hmax 30 m\n22 kW / 3 Pha/380V/50Hz\nXuất xứ: Italy",
+      "dvt": "cái",
+      "sl": 2,
+      "don_gia": 78300000
+    },
+    {
+      "ten": "Khớp nối nhanh DN200\nXuất xứ: Việt Nam",
+      "dvt": "cái",
+      "sl": 2,
+      "don_gia": 12000000
+    },
+    {
+      "ten": "Thanh dẫn hướng inox dày 3mm\nXuất xứ: Việt Nam",
+      "dvt": "mét",
+      "sl": 30,
+      "don_gia": 320000
+    },
+    {
+      "ten": "Xích inox 304 phi 10mm\nXuất xứ: Việt Nam",
+      "dvt": "mét",
+      "sl": 30,
+      "don_gia": 325000
+    }
+  ],
+  "vat_phan_tram": 8,
+  "bao_hanh": "24 tháng",
+  "kiem_tra_hoa_don": {
+    "cong_tien_hang": 199950000,
+    "tien_thue": 15996000,
+    "tong": 215946000
+  },
+  "ten_tep": "Bo3Phieu_2611-2026_ICB",
+  "bh_gon": true
+}

@@ -116,7 +116,7 @@ def build(don):
     m.para(d, f"Điện thoại: {TK['dien_thoai']}", after=4)
     m.para(d, "Nội dung bảo hành:", after=2)
     m.table(d, ["STT", "Tên sản phẩm / Model", "Đơn vị", "Số lượng"],
-            [[str(i), " ".join(x.replace("Hiệu ", "").replace("Model: ", "") for x in h["ten"].split("\n")) if don.get("gap_ky_bh") else h["ten"], h["dvt"], str(h["sl"])]
+            [[str(i), " ".join(x.replace("Hiệu ", "").replace("Model: ", "") for x in h["ten"].split("\n")) if (don.get("gap_ky_bh") or don.get("bh_gon")) else h["ten"], h["dvt"], str(h["sl"])]
              for i, h in enumerate(hang, 1)],   # bản đóng dấu: tên hàng 1 dòng để đủ chỗ dấu
             [1.2, 10.0, 2.4, 2.4], size=11, center_cols=(0, 2, 3))
     for x in ["I./ Bên bán hàng cam kết bảo hành cho những hàng hoá đã giao theo Biên bản bàn giao hàng hoá.",
