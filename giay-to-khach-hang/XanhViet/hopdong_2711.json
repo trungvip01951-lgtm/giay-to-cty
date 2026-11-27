@@ -1,0 +1,46 @@
+{
+  "khach": {
+    "ten": "CÔNG TY TNHH MÔI TRƯỜNG & CÔNG NGHỆ XANH VIỆT",
+    "mst": "0102995403",
+    "dia_chi": "Tòa nhà Xanh Việt, Khu đô thị số 1 Đền Đô, phường Từ Sơn, thành phố Bắc Ninh, Việt Nam",
+    "dien_thoai": "02223 840 768",
+    "stk": "0291102999888",
+    "ngan_hang": "Ngân hàng MB - Chi nhánh Kinh Bắc",
+    "dai_dien": "Ông Đào Văn Quý",
+    "chuc_vu": "Giám đốc"
+  },
+  "so_hd": "2711/2026/HĐMB/TK/XV",
+  "ngay_hd": [
+    27,
+    11,
+    2026
+  ],
+  "ten_tep": "HopDong_2711-2026_XanhViet",
+  "ghi_chu_gia": "Căn cứ Báo giá số BG-27112026-001 ngày 26/11/2026 của bên B.",
+  "hang": [
+    {
+      "ten": "Bơm chìm nước thải Inox\nHiệu PEROTAC\nModel: FS75/40M\nLưu lượng max: 18 m3/h\nCột áp max: 9.5 m\nCông suất: 0.55 KW / 1 Pha/220V/50Hz\nXuất xứ: Đài Loan",
+      "dvt": "cái",
+      "sl": 1,
+      "don_gia": 5000000
+    },
+    {
+      "ten": "Bơm chìm nước thải\nHiệu PEROTAC\nModel: SS-1500\nLưu lượng max: 42 m3/h\nCột áp max: 16 m\nCông suất: 1.5 KW / 3 Pha/380V/50Hz\nXuất xứ: Đài Loan",
+      "dvt": "cái",
+      "sl": 2,
+      "don_gia": 4500000
+    },
+    {
+      "ten": "Máy khuấy cạn (bao gồm cánh khuấy)\nModel: GV24-0.4\nCông suất: 0.4 KW / 3 Pha/380V\nTốc độ vòng quay: 100 RPM",
+      "dvt": "cái",
+      "sl": 1,
+      "don_gia": 5500000
+    }
+  ],
+  "vat_phan_tram": 8,
+  "kiem_tra_hoa_don": {
+    "cong_tien_hang": 19500000,
+    "tien_thue": 1560000,
+    "tong": 21060000
+  }
+}
