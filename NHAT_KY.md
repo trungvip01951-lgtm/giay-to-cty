@@ -95,3 +95,4 @@
 - 28/11/2026: thêm bản báo giá RT-H91125CS-T2 hiệu REDPUMP, xuất xứ Trung Quốc (giá giữ 2 x 44.000.000 = 95.040.000 gồm VAT), ghi chú Trung Kiên phân phối REDPUMP; giữ bản PEROTAC.
 - 28/11/2026: báo giá 2711/2026/BG/TK-2 ngày 27/11/2026 (2 tủ điện điện từ T-75 380V x 2.500.000 = 5.000.000 + VAT 400.000 = 5.400.000) điền khách CÔNG TY CỔ PHẦN ĐẦU TƯ QUỐC TẾ ASEAN (MST 2802374148, Thanh Hóa; thêm vào du-lieu/khach_hang.json), làm lại bằng tao_bao_gia.py (1 trang). Bỏ 2 ghi chú sai của bản app: 'Giá trên đã bao gồm VAT' (bảng tách VAT riêng) và 'Hàng nhập khẩu có đủ CO CQ'; sửa 'ĐIÊN' -> 'điện', ngân hàng theo quy tắc (PGD).
 - 28/11/2026: báo giá ASEAN 2711/2026/BG/TK-2: bản có dấu + chữ ký Giám đốc và bản Scan (1 trang).
+- 28/11/2026: báo giá 1 bơm chìm PEROTAC 200WC330-50-45 (330 m³/h, 45 m, 45 kW 3 pha mặc định, Đài Loan) x 155.000.000 + VAT 12.400.000 = 167.400.000; khách, số BG để trống; bản in không dấu.

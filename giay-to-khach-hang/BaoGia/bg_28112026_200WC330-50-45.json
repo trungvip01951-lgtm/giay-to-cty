@@ -1,0 +1,35 @@
+{
+  "so": "BG-28112026-......",
+  "ngay": [
+    2026,
+    11,
+    28
+  ],
+  "khach": {
+    "ten": "",
+    "dien_thoai": "",
+    "dia_chi": ""
+  },
+  "hang": [
+    {
+      "ten": "Bơm chìm nước thải\nHiệu PEROTAC\nModel: 200WC330-50-45\nLưu lượng: 330 m³/h\nCột áp: 45 m\nCông suất: 45 kW / 3 Pha/380V/50Hz\nXuất xứ: Đài Loan",
+      "dvt": "cái",
+      "sl": 1,
+      "don_gia": 155000000
+    }
+  ],
+  "vat_phan_tram": 8,
+  "kiem_tra": [
+    155000000,
+    12400000,
+    167400000
+  ],
+  "ghi_chu": [
+    "Hàng mới 100%, nhập khẩu có đầy đủ CO, CQ; bảo hành 12 tháng theo điều kiện của hãng",
+    "Hiệu lực báo giá: 30 ngày kể từ ngày báo giá"
+  ],
+  "thanh_toan": "100% trước khi nhận hàng hoặc ngay khi nhận hàng",
+  "giao_hang": "Theo thỏa thuận của 2 bên",
+  "dia_diem_giao": "Theo thỏa thuận của 2 bên",
+  "ten_tep": "BaoGia_PEROTAC_200WC330-50-45_28112026"
+}
