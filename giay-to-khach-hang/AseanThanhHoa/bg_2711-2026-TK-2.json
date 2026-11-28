@@ -1,0 +1,36 @@
+{
+  "so": "2711/2026/BG/TK-2",
+  "ngay": [
+    2026,
+    11,
+    27
+  ],
+  "khach": {
+    "ten": "CÔNG TY CỔ PHẦN ĐẦU TƯ QUỐC TẾ ASEAN",
+    "mst": "2802374148",
+    "dien_thoai": "",
+    "dia_chi": "Lô K48 - khu II, khu đô thị Bắc Đại lộ Lê Lợi, Phường Hạc Thành, Tỉnh Thanh Hoá, Việt Nam"
+  },
+  "hang": [
+    {
+      "ten": "Tủ điện điện từ\nModel: T-75 380V",
+      "dvt": "cái",
+      "sl": 2,
+      "don_gia": 2500000
+    }
+  ],
+  "vat_phan_tram": 8,
+  "kiem_tra": [
+    5000000,
+    400000,
+    5400000
+  ],
+  "ghi_chu": [
+    "Giao hàng trong vòng 1 ngày",
+    "Hàng mới 100%, bảo hành 12 tháng theo điều kiện của hãng"
+  ],
+  "thanh_toan": "100% trước khi nhận hàng hoặc ngay khi nhận hàng",
+  "giao_hang": "Trong vòng 1 ngày",
+  "dia_diem_giao": "Theo thỏa thuận của 2 bên",
+  "ten_tep": "BaoGia_2711-2026-BG-TK-2_Asean"
+}
