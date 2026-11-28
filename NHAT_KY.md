@@ -90,3 +90,4 @@
 - 28/11/2026: Phú Vinh: anh chỉ cần 3 phiếu + nhãn gửi hàng -> PhuVinh_27112026_3Phieu_NhanGui.pdf (4 trang).
 - 28/11/2026: Phú Vinh: sửa SĐT chị Thái Thị Huyền thành 0372944832 (du-lieu/khach_hang.json, hợp đồng, 3 phiếu, nhãn gửi); làm lại 2 file PDF.
 - 28/11/2026: Báo giá 2 máy thổi khí con sò PEROTAC GB-15000S (1050 m³/h, 77 KPa, Đài Loan; thông số theo ảnh app báo giá) x 44.000.000 = 88.000.000 + VAT 7.040.000 = 95.040.000 (khách hỏi máy RT-H91125CS-T2 12.5 kW). Chưa có công suất/điện áp GB-15000S nên chưa ghi; số báo giá, tên khách để trống; bản in không dấu.
+- 28/11/2026: báo giá GB-15000S thêm ghi chú thay thế tương đương RT-H91125CS-T2 12.5 kW (cùng 1050 m³/h, 77 KPa) theo anh.
