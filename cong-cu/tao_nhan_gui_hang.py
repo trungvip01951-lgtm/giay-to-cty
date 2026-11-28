@@ -39,6 +39,8 @@ def ve(c, x0, y0, w, h, k, nh, i, n):
     ke()
     dong("NGƯỜI NHẬN:", "SB", 17)
     dong(k["ten"], "SB", 19)
+    if nh.get("nguoi_nhan"):
+        dong(f"Người nhận: {nh['nguoi_nhan']}", "SB", 18)
     dong(f"Điện thoại: {k['dien_thoai']}", "SB", 24)
     dong(f"Địa chỉ nhận hàng: {k.get('dia_diem_giao') or k['dia_chi']}", s=16)
     ke()

@@ -1,0 +1,28 @@
+{
+  "khach": {
+    "ten": "CÔNG TY CP ĐẦU TƯ XÂY DỰNG HẠ TẦNG PHÚ VINH",
+    "mst": "3001123659",
+    "dia_chi": "Tổ dân phố Liên Phú, Phường Hoành Sơn, Tỉnh Hà Tĩnh, Việt Nam",
+    "dien_thoai": "037294482",
+    "stk": "",
+    "ngan_hang": "",
+    "dai_dien": "",
+    "chuc_vu": "",
+    "lien_he": "Bà Thái Thị Huyền – ĐT: 037294482"
+  },
+  "ten_tep": "HopDong_HD27112026_PhuVinh",
+  "hang": [
+    {
+      "ten": "Máy bơm chìm\nModel: 3SSM4/28",
+      "dvt": "chiếc",
+      "sl": 1,
+      "don_gia": 3950000
+    }
+  ],
+  "vat_phan_tram": 8,
+  "kiem_tra_hoa_don": {
+    "cong_tien_hang": 3950000,
+    "tien_thue": 316000,
+    "tong": 4266000
+  }
+}

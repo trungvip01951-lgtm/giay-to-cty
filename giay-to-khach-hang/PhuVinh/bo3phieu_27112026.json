@@ -1,0 +1,37 @@
+{
+  "khach": {
+    "ten": "CÔNG TY CP ĐẦU TƯ XÂY DỰNG HẠ TẦNG PHÚ VINH",
+    "mst": "3001123659",
+    "dia_chi": "Tổ dân phố Liên Phú, Phường Hoành Sơn, Tỉnh Hà Tĩnh, Việt Nam",
+    "dien_thoai": "037294482 (chị Thái Thị Huyền)",
+    "dia_diem_giao": "Văn phòng Phú Vinh, TDP Kỳ Liên, Phường Hoành Sơn, Tỉnh Hà Tĩnh"
+  },
+  "ngay": [
+    27,
+    11,
+    2026
+  ],
+  "can_cu": "Xuất hàng theo Hóa đơn GTGT ký hiệu 1C26TYY ngày 27/11/2026",
+  "hang": [
+    {
+      "ten": "Máy bơm chìm\nModel: 3SSM4/28",
+      "dvt": "chiếc",
+      "sl": 1,
+      "don_gia": 3950000
+    }
+  ],
+  "vat_phan_tram": 8,
+  "bao_hanh": "12 tháng",
+  "kiem_tra_hoa_don": {
+    "cong_tien_hang": 3950000,
+    "tien_thue": 316000,
+    "tong": 4266000
+  },
+  "ten_tep": "Bo3Phieu_27112026_PhuVinh",
+  "nhan": {
+    "ten_hang": "Máy bơm chìm – Model: 3SSM4/28",
+    "so_kien": 1,
+    "ghi_chu": "",
+    "nguoi_nhan": "Thái Thị Huyền"
+  }
+}
