@@ -88,3 +88,4 @@
 - 28/11/2026: phiếu xuất kho Thu Liên 9000015796 sửa theo anh: bình tích áp chỉ ghi hiệu Redpump; tách 80WB45-20-4 (8 cái) và thêm dòng 8 khớp nối nhanh DN80; tổng 26.
 - 28/11/2026: CÔNG TY CP ĐẦU TƯ XÂY DỰNG HẠ TẦNG PHÚ VINH (MST 3001123659, khách mới) theo hóa đơn nháp 1C26TYY ngày 27/11/2026: 01 máy bơm chìm 3SSM4/28 x 3.950.000 + VAT 316.000 = 4.266.000. Bộ in 1 file PhuVinh_27112026_TronBo.pdf 8 trang: hợp đồng (số/ngày để trống), 3 phiếu và đề nghị TT 100% ngày 27/11/2026, nhãn gửi hàng (người nhận Thái Thị Huyền, ĐT 037294482, Văn phòng Phú Vinh, TDP Kỳ Liên, P. Hoành Sơn, Hà Tĩnh). Lưu ý: SĐT anh gửi chỉ có 9 số. tao_nhan_gui_hang.py thêm nguoi_nhan.
 - 28/11/2026: Phú Vinh: anh chỉ cần 3 phiếu + nhãn gửi hàng -> PhuVinh_27112026_3Phieu_NhanGui.pdf (4 trang).
+- 28/11/2026: Phú Vinh: sửa SĐT chị Thái Thị Huyền thành 0372944832 (du-lieu/khach_hang.json, hợp đồng, 3 phiếu, nhãn gửi); làm lại 2 file PDF.
