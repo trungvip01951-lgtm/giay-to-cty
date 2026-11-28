@@ -37,13 +37,19 @@
       "don_gia": 0
     },
     {
-      "ten": "Bình tích áp 300L 10Bar\nNhãn hiệu: Redpump/Vicky",
+      "ten": "Bình tích áp 300L 10Bar\nNhãn hiệu: Redpump",
       "dvt": "cái",
       "sl": 1,
       "don_gia": 0
     },
     {
-      "ten": "Máy bơm chìm Redpump\nModel: 80WB45-20-4 (bao gồm khớp nối nhanh)",
+      "ten": "Máy bơm chìm Redpump\nModel: 80WB45-20-4",
+      "dvt": "cái",
+      "sl": 8,
+      "don_gia": 0
+    },
+    {
+      "ten": "Khớp nối nhanh DN80",
       "dvt": "cái",
       "sl": 8,
       "don_gia": 0
