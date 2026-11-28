@@ -92,3 +92,4 @@
 - 28/11/2026: Báo giá 2 máy thổi khí con sò PEROTAC GB-15000S (1050 m³/h, 77 KPa, Đài Loan; thông số theo ảnh app báo giá) x 44.000.000 = 88.000.000 + VAT 7.040.000 = 95.040.000 (khách hỏi máy RT-H91125CS-T2 12.5 kW). Chưa có công suất/điện áp GB-15000S nên chưa ghi; số báo giá, tên khách để trống; bản in không dấu.
 - 28/11/2026: báo giá GB-15000S thêm ghi chú thay thế tương đương RT-H91125CS-T2 12.5 kW (cùng 1050 m³/h, 77 KPa) theo anh.
 - 28/11/2026: báo giá đổi theo anh: model PEROTAC RT-H91125CS-T2, công suất 12.5 kW, 1050 m³/h, 77 KPa, Đài Loan; 2 x 44.000.000, tổng 95.040.000. Bỏ bản GB-15000S.
+- 28/11/2026: thêm bản báo giá RT-H91125CS-T2 hiệu REDPUMP, xuất xứ Trung Quốc (giá giữ 2 x 44.000.000 = 95.040.000 gồm VAT), ghi chú Trung Kiên phân phối REDPUMP; giữ bản PEROTAC.
