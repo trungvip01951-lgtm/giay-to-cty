@@ -89,17 +89,30 @@ def build(don):
     if k.get("dia_diem_giao"):
         m.para(d, f"Địa điểm giao hàng: {k['dia_diem_giao']}", after=0)
     m.para(d, f"Nội dung: {don['can_cu']}", after=6)
-    rows = [[str(i), "Kho Hà Nội", h["ten"], h["dvt"], str(h["sl"]), so(h["don_gia"]), so(h["sl"] * h["don_gia"])]
-            for i, h in enumerate(hang, 1)]
-    t = m.table(d, ["STT", "Mã kho", "Tên vật tư / Model", "ĐVT", "SL", "Đơn giá", "Thành tiền"], rows,
-                [1.3, 2.0, 5.1, 1.3, 1.0, 2.6, 2.7], size=12, center_cols=(0, 1, 3, 4, 5, 6))
-    dong_tien = ((("Cộng:", cong), (f"VAT {don['vat_phan_tram']}%:", vat)) if vat is not None else ()) + (("Tổng tiền thanh toán:", tong),)
-    for nhan, v in dong_tien:
+    if don.get("khong_gia"):   # phiếu xuất kho không ghi giá: chỉ tên hàng, model, số lượng
+        rows = [[str(i), "Kho Hà Nội", h["ten"], h["dvt"], str(h["sl"])] for i, h in enumerate(hang, 1)]
+        t = m.table(d, ["STT", "Mã kho", "Tên vật tư / Model", "ĐVT", "Số lượng"], rows,
+                    [1.3, 2.2, 8.6, 1.8, 2.1], size=12, center_cols=(0, 1, 3, 4))
         c = t.add_row().cells
-        a = c[0].merge(c[5]); a.paragraphs[0].alignment = m.R; m.run(a.paragraphs[0], nhan, bold=True)
-        c[6].paragraphs[0].alignment = m.C; m.run(c[6].paragraphs[0], so(v), bold=True)
-    m.para(d, f"Bằng chữ: {doc_so(tong)}./.", italic=True, after=10)
+        a_ = c[0].merge(c[3]); a_.paragraphs[0].alignment = m.R; m.run(a_.paragraphs[0], "Tổng cộng:", bold=True)
+        c[4].paragraphs[0].alignment = m.C; m.run(c[4].paragraphs[0], str(sum(h["sl"] for h in hang)), bold=True)
+        m.para(d, "", after=6)
+    else:
+        rows = [[str(i), "Kho Hà Nội", h["ten"], h["dvt"], str(h["sl"]), so(h["don_gia"]), so(h["sl"] * h["don_gia"])]
+                for i, h in enumerate(hang, 1)]
+        t = m.table(d, ["STT", "Mã kho", "Tên vật tư / Model", "ĐVT", "SL", "Đơn giá", "Thành tiền"], rows,
+                    [1.3, 2.0, 5.1, 1.3, 1.0, 2.6, 2.7], size=12, center_cols=(0, 1, 3, 4, 5, 6))
+        dong_tien = ((("Cộng:", cong), (f"VAT {don['vat_phan_tram']}%:", vat)) if vat is not None else ()) + (("Tổng tiền thanh toán:", tong),)
+        for nhan, v in dong_tien:
+            c = t.add_row().cells
+            a = c[0].merge(c[5]); a.paragraphs[0].alignment = m.R; m.run(a.paragraphs[0], nhan, bold=True)
+            c[6].paragraphs[0].alignment = m.C; m.run(c[6].paragraphs[0], so(v), bold=True)
+        m.para(d, f"Bằng chữ: {doc_so(tong)}./.", italic=True, after=10)
     ky(d, ["Đại diện bên bán", "Người nhận hàng", "Thủ kho"], {0: TEN_GIAO}, gap=don.get("gap_ky", 4))  # gap_ky lớn: chừa chỗ đóng dấu
+    if don.get("chi_xuat_kho"):
+        p = pathlib.Path(sys.argv[1]).parent / (don["ten_tep"] + ".docx")
+        d.save(p)
+        return p, cong, vat, tong
     ngat_trang(d)
 
     # 2. PHIẾU BẢO HÀNH

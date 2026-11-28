@@ -1,0 +1,56 @@
+{
+  "khach": {
+    "ten": "CÔNG TY TNHH VẬT TƯ THIẾT BỊ THU LIÊN",
+    "mst": "0105058215",
+    "dia_chi": "Thửa đất số 4, Tờ bản đồ số 4, Khu đất dịch vụ khu 2, Thôn Yên Lũng, Xã An Khánh, Thành phố Hà Nội, Việt Nam",
+    "dien_thoai": ""
+  },
+  "ngay": [
+    28,
+    11,
+    2026
+  ],
+  "can_cu": "Xuất hàng theo đơn hàng 9000015796 ngày 12/08/2026 (Dự án DA HÒA LONG BẮC NINH T8L1 (NK)-ME)",
+  "hang": [
+    {
+      "ten": "Máy bơm trục ngang Redpump\nModel: CM40-160/4",
+      "dvt": "cái",
+      "sl": 2,
+      "don_gia": 0
+    },
+    {
+      "ten": "Máy bơm chìm Redpump\nModel: SFM6-15-0.55F",
+      "dvt": "cái",
+      "sl": 2,
+      "don_gia": 0
+    },
+    {
+      "ten": "Máy bơm trục ngang Perotac\nModel: CDX90/10",
+      "dvt": "cái",
+      "sl": 2,
+      "don_gia": 0
+    },
+    {
+      "ten": "Máy bơm trục ngang Redpump\nModel: CM50-160/5.5",
+      "dvt": "cái",
+      "sl": 3,
+      "don_gia": 0
+    },
+    {
+      "ten": "Bình tích áp 300L 10Bar\nNhãn hiệu: Redpump/Vicky",
+      "dvt": "cái",
+      "sl": 1,
+      "don_gia": 0
+    },
+    {
+      "ten": "Máy bơm chìm Redpump\nModel: 80WB45-20-4 (bao gồm khớp nối nhanh)",
+      "dvt": "cái",
+      "sl": 8,
+      "don_gia": 0
+    }
+  ],
+  "vat_phan_tram": null,
+  "khong_gia": true,
+  "chi_xuat_kho": true,
+  "ten_tep": "PhieuXuatKho_DH9000015796_ThuLien"
+}
